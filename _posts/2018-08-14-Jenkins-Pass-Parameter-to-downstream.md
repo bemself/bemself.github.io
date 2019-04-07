@@ -3,11 +3,9 @@ title: Jenkins Pass Parameters to downstream jobs
 date: 2018-08-14 21:05:13 +0800
 layout: post
 categories:
-
 - Python
   tags:
 - Python
-excerpt_separator: <!--more-->
 ---
 
 # Background
