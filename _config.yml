@@ -1,25 +1,25 @@
 # Site settings
-title: #Pointing to the Moon
-description: #Blog of Yingkai Liu
+title: My Struggle
+description: My Struggle
 baseurl: "" 
-url: #"https://yk-liu.github.io" 
+url: #"https://doituself.github.io"
 
 # GitHub User settings
-username: # Yingkai Liu
-github_username: #yk-liu
-user_description: #A Physics undergrad with a broad interest
-user_title: #Physics Undergraduate
-email: #yingkai.liu@outlook.com
+username: My Struggle
+github_username: doituself
+user_description:
+user_title: Nobody
+email: doituself@outlook.com
 
 # Blog Author settings
 author:
-  name:           #Yingkai Liu
+  name:           My Struggle
   picture:        
-  email:          #yingkai.liu@outlook.com
-  description:    #I'm a Physics undergrad with a broad interest.
+  email:          doituself@outlook.com
+  description:
   twitter:
   facebook:
-  github:         #https://github.com/yk-liu
+  github:         https://github.com/doituself
   linkedin:
   clustrmap:      #fill in you clustrmap string. 
 
