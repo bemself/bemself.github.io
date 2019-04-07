@@ -1,22 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
    <head>
-   {% include head.html %} 
+      {% include head.html %}  
 			{% if page.mathjax %}			
 				{% include markdown-enhancements/mathjax.html %}
 			{% endif %}
-   {% include theme-vue.html%}
-    <!-- change font -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,400i,700|Source+Sans+Pro|Ubuntu+Mono" rel="stylesheet">
-    {% if page.numbering == true %}
-    <!-- link to counter.css -->
-    <link rel="stylesheet" href="{{site.url}}{{site.baseurl}}/assets/css/counter.css">
-    {% endif %}
-    {% if page.commentable == true %}
-    <link rel="stylesheet" href="{{site.url}}{{site.baseurl}}/assets/css/commentit.css">
-    {% endif %}
-    <!-- link to responsive post.css -->
-    <link rel="stylesheet" href="{{site.url}}{{site.baseurl}}/assets/css/post.css">
+      {% include theme-vue.html%}
+      <!-- font awesome -->
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+      <!-- change font -->
+      <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,400i,700|Source+Sans+Pro|Ubuntu+Mono" rel="stylesheet">
+      <!-- link to counter.css -->
+      <link rel="stylesheet" href="{{site.url}}{{site.baseurl}}/assets/css/counter.css">
+			<!-- link to responsive post.css -->
+      <link rel="stylesheet" href="{{site.url}}{{site.baseurl}}/assets/css/post.css">
    </head>
 	 
 <body>
@@ -40,26 +37,21 @@
 	<div class="wrap">
 		<div class="container content">
 			<div class="page">
-				{% include frontmatter.html %}
-				
+
 				<div id="content-container" style="text-align:justify">
 					 {{ content }}			
 				</div>
-				
-				<div id="comment-session">
-					 {% include commentit.html %}
-				</div>
-				
+
 			 </div>
 		</div>
+		
+
 	</div>
 	
 	<label for="sidebar-checkbox" class="sidebar-toggle"></label>
-	
-	{% include footer.html %} 
-	
+			{% include footer.html %} 
 </body>
-	{% if page.mermaid == true %}
+{% if page.mermaid == true %}
 	{% include markdown-enhancements/mermaid.html %}
 	{% endif %}
 

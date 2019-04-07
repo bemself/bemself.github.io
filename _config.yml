@@ -1,32 +1,32 @@
 # Site settings
-title: My Struggle
-description:
-baseurl: ""
-url: "https://doituself.github.io"
+title: #Pointing to the Moon
+description: #Blog of Yingkai Liu
+baseurl: "" 
+url: #"https://yk-liu.github.io" 
 
 # GitHub User settings
-username: A Being
-github_username: doituself
-user_description:
-user_title:
-email: doituself@outlook.com
+username: # Yingkai Liu
+github_username: #yk-liu
+user_description: #A Physics undergrad with a broad interest
+user_title: #Physics Undergraduate
+email: #yingkai.liu@outlook.com
 
 # Blog Author settings
 author:
-  name:           doituself
-  picture:
-  email:          doituself@outlook.com
-  description:
+  name:           #Yingkai Liu
+  picture:        
+  email:          #yingkai.liu@outlook.com
+  description:    #I'm a Physics undergrad with a broad interest.
   twitter:
   facebook:
-  github:         https://github.com/doituself
+  github:         #https://github.com/yk-liu
   linkedin:
-  clustrmap:      #fill in you clustrmap string.
+  clustrmap:      #fill in you clustrmap string. 
 
 
 # markdown
 markdown: kramdown
-
+  
 kramdown:
  footnote_nr: 1
  entity_output: as_char
@@ -40,13 +40,13 @@ kramdown:
  block:
   line_numbers: true
   start_line: 1
-
+ 
 highlighter: rouge
-
+    
 plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
-
+  
 
 permalink: none
 
@@ -74,4 +74,3 @@ exclude:
  - "*.nb"
  - "*.bk"
  - "*.draft.md"
-theme: jekyll-theme-architect
