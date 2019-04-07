@@ -30,8 +30,8 @@ a{
 
 div.lower a{
     color: #42b983;
-    font-weight: 600;
-    padding: 0px 2px;
+    font-weight: 900;
+    padding: 0px 20px;
 }
 
 div.lower ul,ol,dl{
@@ -301,8 +301,9 @@ sub,sup{
 .permlinks{
     margin:10px;
 		border-left:10%;
-    width:50%;
+    width:100%;
     text-align:left
+    align-itself:center
 }
 .lower{
     text-align:center;
