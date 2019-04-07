@@ -1,6 +1,6 @@
 ---
 title: 态度改变与社会影响第2章 对行为的影响：直接的影响途径
-date: 2017-09-30 21:05:13 +0800
+date: '2017-09-30 21:05:13 +0800'
 layout: post
 categories:
   - 开智
@@ -8,6 +8,15 @@ tags:
   - 开智
   - 卡片
   - 态度改变与社会影响
+comments:
+  - author:
+      type: full
+      displayName: doituself
+      url: 'https://github.com/doituself'
+      picture: 'https://avatars1.githubusercontent.com/u/45781328?v=4&s=73'
+    content: hkhjkh
+    date: 2019-04-07T15:40:20.631Z
+
 ---
 
 我心依旧，奈何人在江湖，身不由己
