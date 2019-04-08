@@ -1,11 +1,12 @@
 ---
-title: Jenkins Pass Parameters within Build using Groovy
-edit: 2018-08-14
+title: Jenkins - Pass Parameters within Build using Groovy
+edit: 2018-08-10
 layout: post
 categories:
 - Python
-  tags:
+tags:
 - Python
+description: Jenkins持续集成。After Jenkins is upgraded from 1.0 to 2.0, our existing solution for creating and passing build parameters stops to workings.
 ---
 
 # Background

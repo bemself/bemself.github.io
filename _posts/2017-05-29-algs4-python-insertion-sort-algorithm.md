@@ -1,5 +1,5 @@
 ---
-title: 插入排序算法 Insertion Sort
+title: Algorithm in Python - 插入排序算法 Insertion Sort
 edit: 2017-09-30
 layout: post
 categories:
@@ -8,6 +8,7 @@ categories:
 tags:
   - Python
   - 算法
+description: 《算法4》，用 Python 实现 插入排序 算法。插入排序算法非常适用于小数组和部分排序好的数组，是应用比较多的算法。详见本文
 ---
 
 **排序算法列表电梯**：

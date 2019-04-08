@@ -10,7 +10,7 @@ mathjax: true
 
 # Me
 
-My name is ...
+My name is doituself ~~
 
 # Posts
 
@@ -28,7 +28,7 @@ The posts are at different status.
 
 # Sources
 
-This website (source code [here](https://github.com/yk-liu/yk-liu.github.io)) uses these sources:
+This website (source code [here](https://github.com/doituself/doituself.github.io)) uses these sources:
 
 | Module                                                       | Mainly used in                                  | License/ TOS                                                 |
 | ------------------------------------------------------------ | ----------------------------------------------- | ------------------------------------------------------------ |
@@ -46,8 +46,10 @@ This website (source code [here](https://github.com/yk-liu/yk-liu.github.io)) us
 | [404 T-rex game](https://github.com/wayou/t-rex-runner)      | 404 page                                        | from [Chromium source code](https://cs.chromium.org/chromium/src/components/neterror/resources/offline.js?q=t-rex+package), [license](https://chromium.googlesource.com/chromium/src.git/+/master/LICENSE) |
 | [Encryption](https://github.com/robinmoisson/staticrypt)     | Secret Pages                                    | [MIT](http://opensource.org/licenses/MIT)                    |
 
-Additional licensing information can be found [here](https://github.com/yk-liu/yk-liu.github.io/blob/master/LICENSE.md).
+Additional licensing information can be found [here](https://github.com/doituself/doituself.github.io/blob/master/LICENSE.md).
+
+This site is copied from the templated shared from [here](https://github.com/yk-liu/yk-liu.github.io/), thanks for the author yk-liu
 
 # Contact
 
-The best way to reach me is via email: $username $ @ $email.com$
+The best way to reach me is via email: doituself@outlook.com

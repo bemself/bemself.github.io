@@ -1,27 +1,12 @@
 ---
-title: Batch Setup Java Web Start for Jenkins Slaves
+title: Jenkins - Batch Setup Java Web Start for Jenkins Slaves
 edit: 2018-08-10
 layout: post
 categories:
   - Python
 tags:
   - Python
-comments:
-  - author:
-      type: full
-      displayName: doituself
-      url: 'https://github.com/doituself'
-      picture: 'https://avatars1.githubusercontent.com/u/45781328?v=4&s=73'
-    content: test
-    date: 2019-04-07T15:18:04.789Z
-  - author:
-      type: full
-      displayName: doituself
-      url: 'https://github.com/doituself'
-      picture: 'https://avatars1.githubusercontent.com/u/45781328?v=4&s=73'
-    content: testtttt
-    date: 2019-04-07T15:21:56.491Z
-
+description: Jenkins持续集成，实现多个 Jenkins Nodes机器上批量设置Java Web Start.
 ---
 
 # Background

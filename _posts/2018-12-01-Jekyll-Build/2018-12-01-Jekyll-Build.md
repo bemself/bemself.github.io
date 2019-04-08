@@ -1,5 +1,5 @@
 ---
-title: Build Your Blog with GitHub Pages
+title: Jekyll - Build Your Blog with GitHub Pages
 tags: Jekyll
 edit: 2019-03-26
 categories: Jekyll

@@ -32,7 +32,9 @@ div.lower a{
     color: #42b983;
     font-weight: 900;
     padding: 0px 20px;
+	background-color: #eeefff;
 }
+
 
 div.lower ul,ol,dl{
     font-size:large

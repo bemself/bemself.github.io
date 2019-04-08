@@ -1,5 +1,5 @@
 ---
-title: 选择排序算法(Selection Sort)
+title: Algorithm in Python - 选择排序算法(Selection Sort)
 edit: 2017-09-30
 layout: post
 categories:
@@ -8,6 +8,7 @@ categories:
 tags:
   - Python
   - 算法
+description: 《算法4》，用 Python 实现 选择排序 算法。选择排序算法(Selection Sort)是排序算法的一种初级算法。虽然比较简单，但是基础，理解了有助于后面学习更高深算法，勿以勿小而不为。
 ---
 
 选择排序算法(Selection Sort)是排序算法的一种初级算法。虽然比较简单，但是基础，理解了有助于后面学习更高深算法，勿以勿小而不为。
