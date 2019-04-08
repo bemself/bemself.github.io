@@ -7,7 +7,7 @@ status: Paused
 mathjax: true
 highlight: true
 mermaid: true
-description: Build Your Blog with GitHub Pages. This is a copy of [Jekyll site](https://github.com/yk-liu/PointingToTheMoon). Thanks for the author of this site template. if someone also like it, follow this guide and get it for your own. Original excerpt: This is a sketch of how to use my theme `PointingToTheMoon` to write your blog. This theme is great for academic use, for it features simple post page with mathjax support and a side bar with toc. The main page on the other hand is somewhat fancy.
+description: Build Your Blog with GitHub Pages. This is a copy of [Jekyll site](https://github.com/yk-liu/PointingToTheMoon). Thanks for the author of this site template. if someone also like it, follow this guide and get it for your own. 
 ---
 
 # What Do I Have to Offer
