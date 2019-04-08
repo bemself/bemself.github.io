@@ -1,11 +1,12 @@
 ---
-title: Migrate Jenkins Jobs and Nodes
-edit: 2018-08-10
+title: Jenkins - Migrate Jenkins Jobs and Nodes
+edit: 2018-08-11
 layout: post
 categories:
 - Python
 tags:
 - Python
+description: Jenkins持续集成，实现在两个Jenkins服务器间迁移Jobs和Nodes
 ---
 
 ## Background

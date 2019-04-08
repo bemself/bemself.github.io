@@ -1,11 +1,12 @@
 ---
-title: Docker 配置机器学习环境
-edit: 2017-12-04
+title: ML - Docker 配置机器学习环境
+edit: 2017-12-06
 layout: post
 categories:
 - Python
 tags:
 - Python
+description: 如何在本地配置机器学习环境，使用Docker
 ---
 
 # Docker 配置机器学习环境
