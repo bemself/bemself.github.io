@@ -1,6 +1,6 @@
 ---
 title: Batch Setup Java Web Start for Jenkins Slaves
-date: '2018-08-10 21:05:13 +0800'
+edit: 2018-08-10
 layout: post
 categories:
   - Python

@@ -1,6 +1,6 @@
 ---
 title: Jenkins Groovy
-date: 2017-09-30 21:05:13 +0800
+edit: 2017-09-30
 layout: post
 categories:
 - Groovy
