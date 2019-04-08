@@ -1,6 +1,6 @@
 ---
 title: Docker 配置机器学习环境
-date: 2017-12-04 21:05:13 +0800
+edit: 2017-12-04
 layout: post
 categories:
 - Python

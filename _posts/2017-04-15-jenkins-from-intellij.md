@@ -1,6 +1,6 @@
 ---
 title: 如何在 Intellij 中设置集成 Jenkins 服务器连接
-date: 2017-09-30 21:05:13 +0800
+edit: 2017-09-30
 layout: post
 categories:
 - Groovy

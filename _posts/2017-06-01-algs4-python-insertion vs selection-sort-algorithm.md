@@ -1,6 +1,6 @@
 ---
 title: 插入排序算法和选择排序算法比较
-date: 2017-09-30 21:05:13 +0800
+edit: 2017-09-30
 layout: post
 categories:
   - Python
