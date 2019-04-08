@@ -30,9 +30,13 @@ a{
 
 div.lower a{
     color: #42b983;
-    font-weight: 900;
+    font-weight: 2200;
     padding: 0px 20px;
 	background-color: #eeefff;
+}
+
+div.lower p{
+    padding:0px 120px;
 }
 
 

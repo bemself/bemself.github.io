@@ -14,13 +14,13 @@ layout: home
 	<h2>Recent Posts</h2>
 	<dl>
 		{% for post in site.posts limit:10 %}
-		<b><dt><code>{{ post.date | date_to_string }} </code><i class="fas fa-angle-double-right" aria-hidden="true"></i><a href="{{ post.url }}">{{ post.title }}</a> &nbsp;{% include status-indicator.html status=post.status%}
+		<b><dt><h3><code>{{ post.date | date_to_string }} </code><i class="fas fa-angle-double-right" aria-hidden="true"></i><a href="{{ post.url }}">{{ post.title }}</a> &nbsp;{% include status-indicator.html status=post.status%}</h3>
 		{% if post.description %}</b>
 		<dd style="text-align: justify">{{ post.description | markdownify }}
 		</dd>
 		{% endif %}
 		{% endfor %}
-		<p>... <a href="/blog">Full Posts List</a> </p>
+		<h3><p>... <a href="/blog">Full Posts List</a> </p></h3>
 	</dl>
 
 	<div>
