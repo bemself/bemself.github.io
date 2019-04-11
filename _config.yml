@@ -65,7 +65,12 @@ defaults:
       protected: false
       commentable: true
       rss: true
-
+# Post wordcount display settings
+post_wordcount:
+  item_text: true
+  wordcount: true
+  min2read: true
+  separated_meta: true
 
 exclude:
  - LICENSE.md
