@@ -246,9 +246,28 @@ source ~/.bash_profile
 
 现在再运行python, 便是2.7.15了。
 
-## 待解问题
+## 待解问题（已解决）
 
 ``` pyenv install 3.7.0```后，切换到 ```pyenv local 3.7.0```, 运行 python, 显示仍然是 2.7...
+
+### 找原因：
+
+刚终于认真去看了[pyenv/pyenv: Simple Python version management](https://github.com/pyenv/pyenv#how-it-works)官方文档，其中提到了一点：
+
+> Directories in PATH are searched **from left to right**, so a matching executable in a directory at the beginning of the list takes precedence over another one at the end
+
+我查看了下我的 PATH，最左面竟然是 /usr/local/bin: /usr/bin，系统自带的python都在这里面了。
+
+### 解决：
+
+所以我的解决方案：删了这俩（因为后面还有这俩）。现在OK了。
+
+现在再理解一下 pyenv 运行命令的顺序：PATH 是第一位的。
+
+> So with pyenv installed, when you run, say, pip, your operating system will do the following:
+Search your **PATH** for an executable file named pip
+Find the **pyenv shim** named pip at the beginning of your PATH
+Run the shim named pip, which in turn passes the command along to pyenv
 
 ## 参考:
 
