@@ -271,4 +271,5 @@ Run the shim named pip, which in turn passes the command along to pyenv
 
 ## 参考:
 
-[怎么才能放飞自我的玩儿Python · Yixuan](http://yixuan.li/geek/2018/07/31/pyenvVirtualenv/)
+- [pyenv/pyenv: Simple Python version management](https://github.com/pyenv/pyenv#how-it-works)
+- [怎么才能放飞自我的玩儿Python · Yixuan](http://yixuan.li/geek/2018/07/31/pyenvVirtualenv/)
