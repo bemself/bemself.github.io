@@ -19,6 +19,31 @@ description: Python 2 和 3 如何和平共处在同一台电脑中？同一版�
 
 由于电脑中已有py2和py3，已混乱，很早被提醒pyenv很好用，一直拒绝开始。
 
+## 关于 pyenv, virtualenv, pyenv-virtualenv
+
+先理一下三者的关系，异同。
+
+**pyenv**是管理环境中的**Python版本**的，比如可以有Python 2.7.10, Python 2.7.15, Python 3.6等。
+
+**virtualenv**是管理某个具体Python版本的**Packages**(包)的，比如可以有：
+
+```pyenv 2.7.10 virtualenv1```, ```pyenv 2.7.10 virtualenv2```
+
+- virtualenv1中：基于python2.7.10的django app需要用到django 1.6
+
+- virtualenv2中：基于Python2.7.10的django app需要用到django 2.6
+
+以此来隔离app开发环境。
+
+virtualenv的创建，其实是将系统当前Python版本的解析器等复制了一份到本地app 文件夹中，再加载app所需的各种包。这样便和系统Python环境隔离开了。
+
+但是这样有一个不足之处，如果开发其他的app也要用到类似的环境，就需要在新的app folder里面重新创建一个virtualenv，再同样加载所需的包。这样就达不到类似编程中的**复用（Reuse）**效果。
+
+所以又有了Pyenv-virtualenv, 直接在系统环境下创建某个Python版本的多个virtual环境，各赋予一个名字。当开发各种app时:
+
+- 如有直接可用的virtual环境，直接调用之。
+- 如无现有可用的，pyenv-virtualenv 新创建一个，然后调用之。
+
 ## 使用pyenv搭建python2.7.15
 
 官方github：[pyenv/pyenv: Simple Python version management](https://github.com/pyenv/pyenv#homebrew-on-macos)
@@ -43,34 +68,6 @@ pyenv commands
 pyenv install --list
 ```
 
-安装python 2.7.15
-
-```
-pyenv install 2.7.15
-```
-
-但是安装失败，报错
-
-```
-ERROR: The Python zlib extension was not compiled. Missing the zlib?
-```
-
-通过Stack Overflow 找到官方wiki [Common build problems · pyenv/pyenv Wiki](https://github.com/pyenv/pyenv/wiki/Common-build-problems)
-
-解决：
-
-```
-brew install zlib
-```
-
-Not working. 再试，因为我的mac是 Mojave or higher (10.14+) you will also [need to install the additional SDK headers](https://developer.apple.com/documentation/xcode_release_notes/xcode_10_release_notes#3035624)
-
-```
-sudo installer -pkg /Library/Developer/CommandLineTools/Packages/macOS_SDK_headers_for_macOS_10.14.pkg -target /
-```
-
-再重新安装2.7.15 成功。
-
 pyenv versions 查看，2.7.15在列，OK
 
 ```
@@ -90,11 +87,10 @@ pyenv version：显示目前环境中的确实是2.7.15
 2.7.15 (set by /Users/test/.pyenv/version)
 ```
 
-以后如需要，再单独设local环境
+以后如需要，再单独设local环境，如：
 
 ```
 pyenv local 3.6
-pyenv local --unset
 ```
 
 至此以为一切OK了，但是在命令行里跑```python```,显示的却是系统自带的2.7.10，咋回事？
@@ -105,13 +101,6 @@ Python 2.7.10 (default, Aug 17 2018, 17:41:52)
 
 尝试下pyenv local，依然如此，不得其解ing。。。待尝试[pyenv/pyenv-virtualenv: a pyenv plugin to manage virtualenv (a.k.a. python-virtualenv)](https://github.com/pyenv/pyenv-virtualenv).【解决方案见下文】
 
-```
-192:gitlab.com.camp test$ pyenv local 2.7.15
-192:gitlab.com.camp test$ pyenv version
-2.7.15 (set by /Users/test/gitlab.com.camp/.python-version)
-192:gitlab.com.camp test$ python -V
-Python 2.7.10
-```
 
 ## 安装pyenv-virtualenv
 
@@ -157,18 +146,47 @@ pyenv: version `2.7.15/envs/camp_orphan' is not installed (set by /Users/gitlab.
   2.7.15/envs/camp
 ```
 
-不太清楚这两个啥区别：
+
+## 坑们
+
+- Mac上安装 ```python 2.7.15``` 失败报错:
 
 ```
-camp
-2.7.15/envs/camp
+ERROR: The Python zlib extension was not compiled. Missing the zlib?
 ```
 
-【2019年01月02日 更新】
+通过Stack Overflow 找到官方wiki [Common build problems · pyenv/pyenv Wiki](https://github.com/pyenv/pyenv/wiki/Common-build-problems)
 
-解决上述问题：pyenv local成功，但python依然没有设成2.7.15
+解决：
 
-在~/.bash_profile中添加一下几行，保存
+```
+brew install zlib
+```
+
+Not working. 再试，因为我的mac是 Mojave or higher (10.14+) 
+
+> you will also [need to install the additional SDK headers](https://developer.apple.com/documentation/xcode_release_notes/xcode_10_release_notes#3035624)
+
+```
+sudo installer -pkg /Library/Developer/CommandLineTools/Packages/macOS_SDK_headers_for_macOS_10.14.pkg -target /
+```
+
+再重新安装2.7.15 成功。
+
+- pyenv 环境中运行 python 显示的是系统python版本
+
+运行：```pyenv global 2.7.15```后，```pyenv version```显示正常为2.7.15, 但是再运行 ```python```却显示为系统本地的python 2.7.10：
+
+
+```
+Python 2.7.10 (default, Aug 17 2018, 17:41:52) 
+```
+
+尝试下pyenv local，依然如此，不得其解ing。。。
+
+**问题解决**：
+
+在~/.bash_profile中添加一下几行，并保存
 
 ```
 export PATH="~/.pyenv/bin:$PATH"    
@@ -227,47 +245,6 @@ source ~/.bash_profile
 ```
 
 现在再运行python, 便是2.7.15了。
-
-## More about pyenv, virtualenv, pyenv-virtualenv
-
-探索一下三者的关系，异同。
-
-**pyenv**是管理环境中的**Python版本**的，比如可以有Python 2.7.10, Python 2.7.15, Python 3.6等。
-
-**virtualenv**是管理某个具体Python版本的**Packages**(包)的，比如可以有：
-
-```pyenv 2.7.10 virtualenv1```, ```pyenv 2.7.10 virtualenv2```
-
-- virtualenv1中：基于python2.7.10的django app需要用到django 1.6
-
-- virtualenv2中：基于Python2.7.10的django app需要用到django 2.6
-
-以此来隔离app开发环境。
-
-virtualenv的创建，其实是将系统当前Python版本的解析器等复制了一份到本地app 文件夹中，再加载app所需的各种包。这样便和系统Python环境隔离开了。
-
-但是这样有一个不足之处，如果开发其他的app也要用到类似的环境，就需要在新的app folder里面重新创建一个virtualenv，再同样加载所需的包。这样就达不到类似编程中的**复用（Reuse）**效果。
-
-所以又有了Pyenv-virtualenv, 直接在系统环境下创建某个Python版本的多个virtual环境，各赋予一个名字。当开发各种app时:
-
-- 如有直接可用的virtual环境，直接调用之。
-- 如无现有可用的，pyenv-virtualenv 新创建一个，然后调用之。
-
-目前的一点理解。但是有一点还是不明白：
-
-```
-运行：
-pyenv virtuanenv 2.7.15 camp
-
-运行：
-pyenv versions
-
-返回：
-system
-  camp
-  2.7.15
-* 2.7.15/envs/camp
-```
 
 ## 待解问题
 
