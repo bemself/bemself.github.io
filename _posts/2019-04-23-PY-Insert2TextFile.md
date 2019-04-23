@@ -178,18 +178,21 @@ str = "Hello {name}, today is {week}".format(**data)
 学 python 框架的时候, 前端的渲染咱们都接触过 [Jinja2 (The Python Template Engine)](http://jinja.pocoo.org/)
 
 ```
-{% extends "layout.html" %}
-{% block body %}
+{ ex-tends "layout.html" }
+{ block body }
   <ul>
   {% for user in users %}
     <li><a href="{{ user.url }}">{{ user.username }}</a></li>
   {% endfor %}
   </ul>
-{% endblock %}
+{ endblock }
 ```
 
 上面这段便是 Jinja 的模板文件样例, 其中的```{{ user.username }}```虽然长得不太一样, 但是很相像不是? 
 虽然没看过 Jinja 源码, 不知道其背后的实现逻辑(比如是否也是用的 "str".format?), 但其设计思想想来是相通的.
+
+Note: 原谅我把 jinja 模板中的 % 都去掉了, 因为上传此文到 我的jekyll blog时, 总是 build 失败 ```unknown tag extends```
+, 原因是上面引用的 jinja 模板中用到了 ```% extends```, 被 jekyll 当做自己的关键词了...看来模板也有局限性的, 如何 在模板中 escape 这种关键词呢??
 
 ## 启示
 
