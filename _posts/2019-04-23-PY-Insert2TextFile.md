@@ -167,7 +167,7 @@ str = "Hello {name}, today is {week}".format(**data)
 
 然后:
 	- 读取模板文件内容
-	- 用 "文件内容".format(**_dict)
+	- 用 ```文件内容.format(**_dict)```
 
 具体就不展开了, 上面的string formatting部分已经介绍过了, 更多细节详见官网.
 
