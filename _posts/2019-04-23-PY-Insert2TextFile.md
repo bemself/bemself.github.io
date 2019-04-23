@@ -164,7 +164,8 @@ str = "Hello {name}, today is {week}".format(**data)
 
 - 将要进行替换处理的原字符串放到一个模板文件中, 比如命名为 blah_tpl.md
 - 在模板文件中, 将要处理的字串中的各个位置, 用占位符{git-it-a-name}
-- 然后
+
+然后:
 	- 读取模板文件内容
 	- 用 "文件内容".format(**_dict)
 
