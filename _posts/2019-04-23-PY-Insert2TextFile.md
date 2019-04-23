@@ -177,18 +177,9 @@ str = "Hello {name}, today is {week}".format(**data)
 
 学 python 框架的时候, 前端的渲染咱们都接触过 [Jinja2 (The Python Template Engine)](http://jinja.pocoo.org/)
 
-```
-{ ex-tends "layout.html" }
-{ block body }
-  <ul>
-  {% for user in users %}
-    <li><a href="{{ user.url }}">{{ user.username }}</a></li>
-  {% endfor %}
-  </ul>
-{ endblock }
-```
+![image-20190423225513081](https://ws2.sinaimg.cn/large/006tNc79ly1g2cyjmg0m8j30qg07nmxu.jpg)
 
-上面这段便是 Jinja 的模板文件样例, 其中的```{{ user.username }}```虽然长得不太一样, 但是很相像不是? 
+上面这段便是 Jinja 的模板文件样例, 其中的```{ user.username }```虽然长得不太一样, 但是很相像不是? 
 虽然没看过 Jinja 源码, 不知道其背后的实现逻辑(比如是否也是用的 "str".format?), 但其设计思想想来是相通的.
 
 Note: 原谅我把 jinja 模板中的 % 都去掉了, 因为上传此文到 我的jekyll blog时, 总是 build 失败 ```unknown tag extends```
