@@ -198,6 +198,10 @@ Note: 原谅我把 jinja 模板中的 % 都去掉了, 因为上传此文到 我�
 
 学习还是得融会贯通~~
 
+## 进一步
+
+- Learn [How a template engine works — Shipeng Feng's Writings](https://fengsp.github.io/blog/2016/8/how-a-template-engine-works/)
+
 ## 参考
 
 - [fileinput — Iterate over lines from multiple input streams](https://docs.python.org/2/library/fileinput.html)
