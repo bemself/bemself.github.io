@@ -1,14 +1,13 @@
 ---
 title: Python - 文本文件中如何插入内容
 date: 2019-04-23
-edit: 2019-04-23
-status: Writing
+edit: 2019-05-11
 layout: post
 categories:
   - Python
 tags:
   - Python
-description:  对文本文件进行读写追加很简单, 但插入或替换内容就不方便了, 本文探讨了几种方法.
+description:  对文本文件进行读写追加很简单, 但插入或替换内容就不方便了, 本文探讨了几种方法, 学习了模板思维, 往大处想.
 ---
 
 # Python: 在文本文件中插入内容
@@ -185,11 +184,18 @@ str = "Hello {name}, today is {week}".format(**data)
 Note: 原谅我把 jinja 模板中的 % 都去掉了, 因为上传此文到 我的jekyll blog时, 总是 build 失败 ```unknown tag extends```
 , 原因是上面引用的 jinja 模板中用到了 ```% extends```, 被 jekyll 当做自己的关键词了...看来模板也有局限性的, 如何 在模板中 escape 这种关键词呢??
 
-## 启示
+## 再进一步
 
-学习还是得融会贯通~~
+现在我们用到了, 模板文件中设置 placeholder, 代码中将一段字符串插入 placeholder 中.
 
-## 进一步
+再往大处想, placeholder 可容纳的内容是不是可以更大更多, 不只是一串字符串, 而是一大长长串字符串呢? 那会是种什么情况? 显然, 另一个文件的内容就是其中一种情况. 这样, 合并拼接文件也变得可能了.
+
+这个启发源自大妈的回复:
+
+[5d[分享][讨论] Python 中如何向文本文件中插入/替换内容 ](https://github.com/DebugUself/du4proto/issues/657)
+
+
+## 再再进一步
 
 - Learn [How a template engine works — Shipeng Feng's Writings](https://fengsp.github.io/blog/2016/8/how-a-template-engine-works/)
 
@@ -201,4 +207,5 @@ Note: 原谅我把 jinja 模板中的 % 都去掉了, 因为上传此文到 我�
 
 ## ChangeLog
 
+- 2019-05-11 update 15m
 - 2019-04-23 init 2h
