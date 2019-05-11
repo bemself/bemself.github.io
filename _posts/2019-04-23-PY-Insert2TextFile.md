@@ -184,6 +184,26 @@ str = "Hello {name}, today is {week}".format(**data)
 Note: 原谅我把 jinja 模板中的 % 都去掉了, 因为上传此文到 我的jekyll blog时, 总是 build 失败 ```unknown tag extends```
 , 原因是上面引用的 jinja 模板中用到了 ```% extends```, 被 jekyll 当做自己的关键词了...看来模板也有局限性的, 如何 在模板中 escape 这种关键词呢??
 
+### Update on 2019-05-11:
+
+解决前面提到的 jinja 模板引用遇到的关键词 escape 问题:
+
+在 [Jinja 的官网](http://jinja.pocoo.org/docs/2.10/templates/)中看到, 
+
+	For bigger sections, it makes sense to mark a block raw. For example, to include example Jinja syntax in a template, you can use this snippet:
+
+```
+{% raw %}
+    <ul>
+    {% for item in seq %}
+        <li>{{ item }}</li>
+    {% endfor %}
+    </ul>
+{% endraw %}
+```
+
+这样, 就可以在 markdown 或其他页面里面引用 jinja 模板内容作为示例了.
+
 ## 再进一步
 
 现在我们用到了, 模板文件中设置 placeholder, 代码中将一段字符串插入 placeholder 中.
