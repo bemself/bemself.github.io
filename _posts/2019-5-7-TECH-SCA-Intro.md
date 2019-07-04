@@ -179,6 +179,6 @@ however all the limitations doesn't stop SCA from being a good helper.
 
 ## Reference
 
-- [What Is Static Analysis (Static Code Analysis)? | Perforce](https://www.perforce.com/blog/qac/what-static-code-analysis)
-- [How Static Code Analysis Works — Plus Static Analysis Example | Perforce](https://www.perforce.com/blog/qac/how-static-code-analysis-works)
-- [False Positives and False Negatives (Plus Examples) in Static Analysis | Perforce](https://www.perforce.com/blog/qac/what-are-false-positives-and-false-negatives-plus-examples)
+- [What Is Static Analysis (Static Code Analysis)?](https://www.perforce.com/blog/qac/what-static-code-analysis)
+- [How Static Code Analysis Works — Plus Static Analysis Example](https://www.perforce.com/blog/qac/how-static-code-analysis-works)
+- [False Positives and False Negatives (Plus Examples) in Static Analysis](https://www.perforce.com/blog/qac/what-are-false-positives-and-false-negatives-plus-examples)
