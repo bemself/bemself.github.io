@@ -1,5 +1,5 @@
 ---
-title: Static Code Analysis Searies - Introduction
+title: SonarQube - Create Custom Java Plugin (0)
 date: 2019-07-04
 edit: 2019-07-04
 status: Writing
