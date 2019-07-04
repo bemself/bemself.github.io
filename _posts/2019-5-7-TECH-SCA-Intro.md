@@ -12,13 +12,13 @@ tags:
 description: 静态代码扫描系列, 此为 SonarQube 之初介绍. 
 ---
 
-## Background
+# Background
 
 Looking for a tool to do some source code analysis on Java projects, and possibly other language projects like Javascript, html etc.
 
 ## Static Code Analysis
 
-	[Static Code Analysis](https://en.wikipedia.org/wiki/Static_code_analysis_
+	[Static program analysis - Wikipedia](https://en.wikipedia.org/wiki/Static_code_analysis)
 
 ### Why
 
@@ -83,7 +83,7 @@ As well as:
 
 ### When
 
-	Static code analysis is performed early in development, before software testing begins. For organizations practicing DevOps, static code analysis takes place during the “Create” phase. 
+> Static code analysis is performed early in development, before software testing begins. For organizations practicing DevOps, static code analysis takes place during the “Create” phase. 
 
  here it comes with another comparation: 
 
@@ -103,9 +103,9 @@ As well as:
 
 ### Who
 
-	[List of Tools](http://en.wikipedia.org/wiki/List_of_tools_for_static_code_analysis)
+> [List of Tools](http://en.wikipedia.org/wiki/List_of_tools_for_static_code_analysis)
 
-	[Topic: static-code-analysis](https://github.com/topics/static-code-analysis)
+> [Topic: static-code-analysis](https://github.com/topics/static-code-analysis)
 
 As said, static code analysis is done by machine.
 
@@ -117,14 +117,14 @@ These tools also integrates with IDEs for developers' convenience.
 
 From manager point of view, an integrated dashboard portal is welcome, SonarQube is one of the popular one.
 
-- [Continuous Inspection | SonarQube](https://www.sonarqube.org/)
+- [Continuous Inspection - SonarQube](https://www.sonarqube.org/)
 	- is Open Source
 	- Supports multiple languages, dashboard reporting, customization for second development
 
 After some investigation, Sonarqube seems to be a good choice for Existing Tool with Second Development, reasons are as below:
 
 1. It's an open source tool, dedicated to code inspection for java and other languages
-	- [Continuous Inspection | SonarQube](https://www.sonarqube.org/)
+	- [Continuous Inspection - SonarQube](https://www.sonarqube.org/)
 	- [GitHub - SonarSource/sonarqube: Continuous Inspection](https://github.com/SonarSource/sonarqube)
 
 2. there is specific sonarqube java project
