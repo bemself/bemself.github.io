@@ -174,15 +174,3 @@ once this is done, the issue reported will be displayed on SonarQube UI, you don
 ## Reference
 
 - [Writing Custom Java Rules 101 - Plugins - Doc SonarQube](https://docs.sonarqube.org/display/PLUG/Writing+Custom+Java+Rules+101)
-
-<script src="https://my.openwrite.cn/js/readmore.js" type="text/javascript"></script>
-<script>
-    const btw = new BTWPlugin();
-    btw.init({
-        id: 'container',
-        blogId: '17542-1573117472798-654',
-        name: ' 读惑',
-        qrcode: 'https://mmbiz.qpic.cn/mmbiz_jpg/hB2nn0Kw2r5CjbicqxxGg76p4SEb5l335bsSokhibLQRAQ26T8HJmpNnwk9jx3IOkyQfeGE0Rj2HuWK8fJy3b1ww/0?wx_fmt=jpeg',
-        keyword: '读惑',
-    });
-</script>
