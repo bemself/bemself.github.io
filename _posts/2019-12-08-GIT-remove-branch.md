@@ -73,6 +73,8 @@ eaa395c5edfa7a23a26e2fae3d006b04841bce0a
 
 
 从本地仓库的 .git 目录看, refs 下面除了 heads, 还有一个 remotes 目录, 
+
+```
 .git
 └─HEAD
 └─refs
@@ -85,6 +87,7 @@ eaa395c5edfa7a23a26e2fae3d006b04841bce0a
         └─master
         └─test
     └─tags
+```
 
 对照一下 `git remote -v` 的运行结果，就更一目了然了。
 
