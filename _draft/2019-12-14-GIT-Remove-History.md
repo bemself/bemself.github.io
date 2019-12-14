@@ -21,11 +21,29 @@ description: 绕开这个问题好久了, 一直对删除心有余悸, 至今其
 
 我遇到的多是:
 
-- 本地 git add 后, 后悔了
+- 本地 git add 后, 后悔了 (这个最简单了)
 - 本地 git ci 后, 后悔了
 - 本地 git pu 后, 后悔了
 
-## git commit 后回滚
+本文题目是 删除历史记录, 就是已经commit过了的, 不过也捎带提一下还没commit的, 这个比较简单.
+
+## 分析
+
+现在了解到, 基本上有 3 个命令相关:
+
+- [git reset](https://git-scm.com/docs/git-reset),
+  - 这个对已经提交或尚未提交的都可以,
+    - 有多种模式, 比如soft/hard/mixed...
+    - 如果想将远程的commit 历史中的某些commit完全删掉, 不留一丝痕迹, 我现在主要用这个的hard模式
+      - 比如你不小心将密码 token啥的上传了, 这个就必要了
+- [git revert](https://git-scm.com/docs/git-revert)
+  - 这个主要是针对已经提交了的commit
+  - 比较温和, 不会删除原来的历史, 只删除代码改动部分
+  - 同时, 会生成一个新的commit记录(当然, 你也可以用 -n 参数选择不生成)
+- [git restore](https://git-scm.com/docs/git-restore)
+  - 这个我还没用过, 是说如果你想从另一个commit里面提取某个文件, 这里先不去探索了
+
+## git commit 后回滚 
 
 - 如果还想保留之前的更改
 
@@ -52,6 +70,21 @@ git reset --soft
   这里面是保存了你刚才reset的commit的msg, 即`test git reset after commit`
   为啥要有这个文件? 因为git想方便你修改后继续用这个msg提交, 当然你也可以替换掉用新的
 
+  做完必要的代码改动后, 现在你觉得可以真正提交了, 那就:
+
+  ```
+  git commit -a -c ORIG_HEAD
+  ```
+
+可能会提示你merge, 继续操作就好了
+
+- 如果不想保留原来的更改, 
+
+```
+git reset --hard
+```
+
+只是小心点, 之前的改动可就都没了
 
 ## 思考
 
