@@ -15,7 +15,7 @@ description:  遇到问题的时候才知道原来我还不会删除分支; 原�
 
 ## Git 分支
 
-[Git Branching Basics][(https://git-scm.com/book/en/v2/Git-Branching-Branches-in-a-Nutshell#ch03-git-branching)
+[Git Branching Basics](https://git-scm.com/book/en/v2/Git-Branching-Branches-in-a-Nutshell#ch03-git-branching)
 
 在学会删除之前, 我觉得有必要先了解一下 分支（branch）的基础知识, 磨刀不误砍柴工.
 
