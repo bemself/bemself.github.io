@@ -99,11 +99,11 @@ git pu origin new-branch
 
 ### PR approve and merge 后, 可以删除你的这个new-branch了
 
-参考: [2019-12-08-GIT-remove-branch.md](2019-12-08-GIT-remove-branch.md)
+参考: [2019-12-08-GIT-remove-branch.md](GIT-remove-branch.html)
 
 ## 思考
 
 - 在用中学
 
 ## ChangeLog
-- 2019-12-12 init
+- 2019-12-14 init
