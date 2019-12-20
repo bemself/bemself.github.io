@@ -13,7 +13,7 @@ description: 持续记录 Git 使用中遇到的各种问题，待后续重拾�
 
 # Git 操作问题多多
 
-很多问题，如果不记下来，下次还会遇到，得重头再来，故写此文，持续记录~ 到哪天 Git 过时不用了
+很多问题，如果不记下来，下次还会遇到，得重头再来，故写此文，持续记录~ 到哪天 Git 过时不用了，其实可能是我不用了~
 
 ## 问题
 
@@ -87,7 +87,7 @@ git pu origin --delete pr-branch
 
 那怎么删？
 
-首先想到用 `git branch -d remotes/origin/pr-branch` 来删，结果说`error: branch `remotes/origin/pr-branch` 不存在，但如果我 ```cat .git/refs/remotes/origin/pr-branch``` 是没问题的，那是咋回事？没有想通，想是 git 哪个环节失灵了。
+首先想到用 `git branch -d remotes/origin/pr-branch` 来删，结果说`error: branch remotes/origin/pr-branch` 不存在，但如果我 `cat .git/refs/remotes/origin/pr-branch` 是没问题的，那是咋回事？没有想通，想是 git 哪个环节失灵了。
 
 好在还有其他办法，在[git remove branch](GIT-remove-branch.html) 一文中提到过，分支就是个指针，在系统中以文件形式存在着，所以找到 `.git/refs/remotes/origin`下面的以分支命名的文件，删掉即可: ```rm -f .git/refs/remotes/origin/pr-branch```
 
