@@ -35,7 +35,7 @@ description:  Python tuple 什么时候用？
 - 一组相关联的数据的集合
   - 集合规模 小
 - 这些数据可以是不同类型
-- 但合起来是一个组合
+  - 但合起来是一个组合
 
 一个比较典型的应用是，笛卡尔坐标系，`(x,y,z)` 表示一个物体的坐标。看起来是挺直观的，比 `list`,`dict`都直观。
 
@@ -71,6 +71,7 @@ TypeError: 'tuple' object does not support item assignment
 2
 ```
 - 同样，设计一个函数，需要返回多个变量的时候，可以用 `list`, 但也可以用 `tuple`, 解析的时候就有了上面那条的便利。
+- 补充一点，因为 `tuple` 是 `immutable` 的，所以可以当做 字典（dict）的 `key` 来用，因为 字典的 `key` 是用到 `hashtable` 实现的， 是不能（该）变动的。
 - 还有啥？暂时没想到
 
 那不太建议用 `tuple` 的地方感觉反而多了：
@@ -81,6 +82,7 @@ TypeError: 'tuple' object does not support item assignment
 ## 参考
 
 - [ why are there separate tuple and list data types](https://docs.python.org/3/faq/design.html#why-are-there-separate-tuple-and-list-data-types)
+- [why must dictionary keys be immutable?](https://docs.python.org/3/faq/design.html#id21)
 
 ## ChangeLog
 - 2019-12-22 init
