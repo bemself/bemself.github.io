@@ -74,7 +74,7 @@ TypeError: 'tuple' object does not support item assignment
 - 补充一点，因为 `tuple` 是 `immutable` 的，所以可以当做 字典（dict）的 `key` 来用，因为 字典的 `key` 是用到 `hashtable` 实现的， 是不能（该）变动的。
 - 还有啥？暂时没想到
 
-那不太建议用 `tuple` 的地方感觉反而多了：
+那不太建议用 `tuple` 的地方感觉就比较重要了：
 
 - `tuple` 定义后，里面的值是不能改的，这个就很不方便了
 - 如果 `tuple` 里面的元素之间没有什么关联的话，用起来也缺失了实际设计的本质
