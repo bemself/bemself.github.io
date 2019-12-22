@@ -1,12 +1,12 @@
 # Site settings
 title: My Struggle
-description: Life continues
+description: Life goes on
 baseurl: "" 
-url: #"https://doituself.github.io"
+url: #"https://bemself.github.io"
 
 # GitHub User settings
 username: My Struggle
-github_username: doituself
+github_username: bemself
 user_description: Life is struggling?
 user_title: Nobody
 email: doituself@outlook.com
@@ -19,7 +19,7 @@ author:
   description:
   twitter:
   facebook:
-  github:         https://github.com/doituself
+  github:         https://github.com/bemself
   linkedin:
   clustrmap:      #fill in you clustrmap string. 
 
