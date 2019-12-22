@@ -10,7 +10,7 @@ mathjax: true
 
 # Me
 
-My name is doituself ~~
+My name is bemself ~~
 
 # Posts
 
@@ -28,7 +28,7 @@ The posts are at different status.
 
 # Sources
 
-This website (source code [here](https://github.com/doituself/doituself.github.io)) uses these sources:
+This website (source code [here](https://github.com/bemself/bemself.github.io)) uses these sources:
 
 | Module                                                       | Mainly used in                                  | License/ TOS                                                 |
 | ------------------------------------------------------------ | ----------------------------------------------- | ------------------------------------------------------------ |
