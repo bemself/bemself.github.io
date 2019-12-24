@@ -53,7 +53,7 @@ TypeError: 'tuple' object does not support item assignment
 
 我定义了一个 `tuple` a, 我想更改它的第一个值，但是报错了 `'tuple' object does not support item assignment`, 这个错其实就是提示了， `a` 里面的值是不能更改了。
 
-如果你想更改，那不如改为定义一个 `list`, 这个 `list` 就是 `mutable`的，即可以任意更改里面的值，这个大家基本都熟悉常用的了。
+如果你想更改，那不如改为定义一个 `list`, 这个 `list` 就是 `mutable` 的，即可以任意更改里面的值，这个大家基本都熟悉常用的了。
 
 ## 小结
 
