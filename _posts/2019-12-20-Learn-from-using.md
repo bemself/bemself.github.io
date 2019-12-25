@@ -3,7 +3,7 @@ title: 开发供应商和用户：解决问题？发现问题？
 date: 2019-12-20
 edit: 2019-12-20
 layout: post
-status: Writing
+status: Completed
 categories:
   - 心路
 tags:
