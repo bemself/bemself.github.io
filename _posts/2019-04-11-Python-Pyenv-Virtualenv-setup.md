@@ -2,7 +2,7 @@
 title: Python - pyenv virtualenv setup
 date: 2019-04-11
 edit: 2019-04-11
-status: Writing
+status:  Completed
 layout: post
 categories:
   - Python
@@ -273,3 +273,4 @@ Run the shim named pip, which in turn passes the command along to pyenv
 
 - [pyenv/pyenv: Simple Python version management](https://github.com/pyenv/pyenv#how-it-works)
 - [怎么才能放飞自我的玩儿Python · Yixuan](http://yixuan.li/geek/2018/07/31/pyenvVirtualenv/)
+- [pyenv 终极指南](https://mp.weixin.qq.com/s/42vxWCUJ5E9hiOzYHPNzdQ)

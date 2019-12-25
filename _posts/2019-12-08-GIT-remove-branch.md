@@ -3,7 +3,7 @@ title: Git - 删除分支(本地和远程)
 date: 2019-12-08
 edit: 2019-12-12
 layout: post
-status: Writing
+status: Completed
 categories:
   - Python
 tags:

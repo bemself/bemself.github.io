@@ -3,7 +3,7 @@ title: Java - 一次从屎稿到成稿的发布
 date: 2019-12-24
 edit: 2019-12-24
 layout: post
-status: Writing
+status: Completed
 categories:
   - Java
 tags:

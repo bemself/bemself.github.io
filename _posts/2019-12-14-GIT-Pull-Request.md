@@ -3,7 +3,7 @@ title: Git - 在 Forked 仓库 如何提交 Pull Request
 date: 2019-12-14
 edit: 2019-12-14
 layout: post
-status: Writing
+status: Completed
 categories:
   - Python
 tags:
