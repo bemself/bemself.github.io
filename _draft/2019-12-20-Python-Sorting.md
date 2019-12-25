@@ -32,6 +32,60 @@ description:  Python 各种数据类型，都怎么排序的？
 
 ## sorted()
 
+sorted 有两个重要参数：
+
+- reverse: 这个很好理解，不提了。
+- key: 重点说这个，因为我绕进去过。
+
+### key 参数
+
+本意就是：我要按照这个 key 来排序，这个 key 由你定义，比如：
+- 如果有一组数，你可能想从小到大排
+- 如果是一组字符串，你可能想按字母顺序排
+- 如果是一组对象，比如一群学生，你可能想按年龄排，或者身高排，等等 你说了算
+
+对应到程序里，这个 key 怎么来表达？先记着：这个 key 的值是个 `function`。
+
+**先看简单的情况**：不传 key 值，就是默认按 `<` 来排需，即从小到大，从 a 到 z 排序。
+
+以 `alist = [1, 3, 2]` 为例，
+```
+>>> alist = [1,3,2]
+>>> sorted(alist)
+[1, 2, 3]
+```
+
+**现在看传入 key 值（function）**: 
+
+```
+>>> alist = "This is a test".split()
+>>> sorted(alist, key=str.lower)
+['a', 'is', 'test', 'This']
+```
+
+上面这个例子中， key的值是 str.lower 函数。
+
+```
+>>> str.lower
+<method 'lower' of 'str' objects
+>>>> str.lower('This')
+'this'
+```
+
+当在 sorted 里面用于排序的时候，这个 key 是怎么用的？
+
+```
+alist = ["this", "is", "a", "test"]
+key = str.lower
+```
+
+大致是这样的顺序：
+
+- 新建
+- 对于 alist 里面的每一个元素，分别将其作为参数传入 str.lower() 函数中，
+- 得到的
+
+
 ## Issues
 
 终于能看懂点这种报错了：
