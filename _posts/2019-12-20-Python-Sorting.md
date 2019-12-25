@@ -1,7 +1,7 @@
 ---
 title: Python - Sort 各种可能
-date: 2019-12-20
-edit: 2019-12-20
+date: 2019-12-25
+edit: 2019-12-25
 layout: post
 status: Writing
 categories:
@@ -15,7 +15,7 @@ description:  Python 各种数据类型，都怎么排序的？
 
 ## Summary
 
-- [sorted(dtype)](https://docs.python.org/3/library/functions.html#sorted) 
+- [sorted(a datatype)](https://docs.python.org/3/library/functions.html#sorted) 
   - 返回一个排序好的 dtype 同类型
   - iterable 的数据类型都适用
   
@@ -46,7 +46,7 @@ sorted 有两个重要参数：
 
 对应到程序里，这个 key 怎么来表达？先记着：这个 key 的值是个 `function`。
 
-**先看简单的情况**：不传 key 值，就是默认按 `<` 来排需，即从小到大，从 a 到 z 排序。
+**先看简单的情况: 不传 key 值**：，就是默认按 `<` 来排需，即从小到大，从 a 到 z 排序。
 
 以 `alist = [1, 3, 2]` 为例，
 ```
@@ -55,7 +55,7 @@ sorted 有两个重要参数：
 [1, 2, 3]
 ```
 
-**现在看传入 key 值（function）**: 
+**现在看传入 key 值（function）- 简单的函数**: 
 
 ```
 >>> alist = "This is a test".split()
@@ -81,10 +81,19 @@ key = str.lower
 
 大致是这样的顺序：
 
-- 新建
+- 新建一个list, 如称之为 sorted_list
 - 对于 alist 里面的每一个元素，分别将其作为参数传入 str.lower() 函数中，
-- 得到的
+- 得到的新值添加到 sorted_list 中
+- 返回这个 sorted_list
 
+
+**继续看传入 key 值（function）- Tuple**: 
+
+**继续看传入 key 值（function）- 复杂列表**: 
+
+**继续看传入 key 值（function）- 字典**: 
+
+**继续看传入 key 值（function）- 嵌套字典**: 
 
 ## Issues
 
