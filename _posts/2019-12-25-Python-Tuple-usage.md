@@ -74,6 +74,10 @@ list 有个 sort() 方法，可以原地排序列表，想当然的以为 tuple 
 >>> ("a")
 'a'
 ```
+
+## [zip](https://realpython.com/python-zip-function/)
+
+
 ## 参考
 
 - [tuple]([Using a trailing comma for a singleton tuple: a, or (a,)](https://docs.python.org/3/library/stdtypes.html?highlight=tuple#tuple))
