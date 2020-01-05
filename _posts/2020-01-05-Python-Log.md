@@ -3,7 +3,7 @@ title: 写代码 Log 也要认真点么?
 date: 2020-01-05
 edit: 2020-01-05
 layout: post
-status: Writing
+status: Completed
 categories:
   - Python
 tags:
