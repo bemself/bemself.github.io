@@ -5,9 +5,9 @@ edit: 2019-12-14
 layout: post
 status: Writing
 categories:
-  - Python
+  - Git
 tags:
-  - Python
+  - Git
 description: 绕开这个问题好久了, 一直对删除心有余悸, 至今其实也不能完全应对, 但至少进步了点, 稍微理解了点 [git reset](https://git-scm.com/docs/git-reset), [git revert](https://git-scm.com/docs/git-reset)
 ---
 

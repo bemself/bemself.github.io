@@ -5,9 +5,9 @@ edit: 2019-12-14
 layout: post
 status: Completed
 categories:
-  - Python
+  - Git
 tags:
-  - Python
+  - Git
 description: 第一次战战兢兢的成功提 Pull Request 后, 开心没两天便发现开头就错了...
 ---
 

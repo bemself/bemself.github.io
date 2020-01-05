@@ -5,9 +5,9 @@ edit: 2019-12-14
 layout: post
 status: Writing
 categories:
-  - Python
+  - Git
 tags:
-  - Python
+  - Git
 description: 持续记录 Git 使用中遇到的各种问题，待后续重拾记忆~
 ---
 

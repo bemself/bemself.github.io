@@ -5,9 +5,9 @@ edit: 2019-12-12
 layout: post
 status: Completed
 categories:
-  - Python
+  - Git
 tags:
-  - Python
+  - Git
 description:  遇到问题的时候才知道原来我还不会删除分支; 原来本地和远程分支是要分别删除的.
 ---
 
