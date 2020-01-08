@@ -3,7 +3,7 @@ title: 记几个很傻的错误和思虑不周
 date: 2020-01-06
 edit: 2020-01-06
 layout: post
-status: Writing
+status: Completed
 categories:
   - Python
 tags:
@@ -40,5 +40,4 @@ description:  连着犯了好几个错误，sigh
   - 在路不通的时候，一定还是不要忘了回到原点~
 
 
-# Changelog
 - 2020-01-06 init
