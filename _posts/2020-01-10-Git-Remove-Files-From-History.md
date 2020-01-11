@@ -52,6 +52,12 @@ Git 操作时，经常“不小心”上传一些不必要的（大）文件，�
 - 最好把本地旧的 repo 删除了，不然可能又不小心 mess up 了
 - 通知其他仓库使用者重新 clone 吧，他们本地的旧的也好删除了。
 
+> 清理后, 
+全新 clone , 检验,
+然后, 增补 gitnigore 配置, 防止再次...
+如果有必要, 可以将数据目录移到工程目录之外,
+增补 ENV 声明来指向
+
 要注意的是：
 
 - BFG 默认不会 touch最新的commit，即如果你要删除的文件在最新的 commit 中，则不会删除之。为什么？因为最新的 commit 很可能是已上线在 production 的，所以~
@@ -65,7 +71,7 @@ Git 操作时，经常“不小心”上传一些不必要的（大）文件，�
 
 [git-clone doc](https://git-scm.com/docs/git-clone#git-clone---mirror):
 
-> --mirror
+> `--mirror`
 
     Set up a mirror of the source repository. This implies --bare. Compared to --bare, --mirror not only maps local branches of the source to local branches of the target, it maps all refs (including remote-tracking branches, notes etc.) and sets up a refspec configuration such that all these refs are overwritten by a git remote update in the target repository.
 
@@ -103,6 +109,28 @@ objectIdCleaner.cleanedObjectMap()
 # 问题
 
 我现在用的还不多，等遇到了继续补充。
+
+## 问题 1： 还是有文件没删除，在某些 commits 中依然能看到
+
+这个问题有两方面：
+
+- 经大妈指正，我混淆了 commit 本身数据 和 版本中的文件数据
+
+我查看的是`https://gitlab.com/<repo>/commit/187e9d07`。
+
+而实际应是 `https://gitlab.com/<repo>/tree/187e9d07/...`, 这里才是对应版本树的文件。
+
+- 有些删除在运行 `bfg` 命令后，我没有及时做 `git reflog expire --expire=now --all && git gc --prune=now --aggressive`
+
+这就等于在数据库中插入数据后没有做 commit 一样，如大妈所言：
+
+> 对 git 仓库进行调整后~
+得刷入数据才生效啊~
+将git 视为数据库的话~
+
+## 问题 2： BFG 之前忘了先清理仓库，删除想删的文件了
+
+这个就有点傻了，我忘记了先把仓库里面想删的文件先物理上删除，结果先跑了 BFG~ 导致后面又跑了几遍~
 
 # 附录
 
@@ -179,6 +207,8 @@ being told the truth. Don't give up: https://www.theguardian.com/us-news/trump-a
 # Reference
 
 - [BFG Repo-Cleaner by rtyley](https://rtyley.github.io/bfg-repo-cleaner/#download)
- 
+- [Reducing the repo size using git · Repository · Project · User · Help · GitLab](https://gitlab.com/help/user/project/repository/reducing_the_repo_size_using_git.md)
+  
 # Changelog
+- 2020-01-11 增补问题
 - 2020-01-10 init
