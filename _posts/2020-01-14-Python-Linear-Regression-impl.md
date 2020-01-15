@@ -1,7 +1,7 @@
 ---
 title: Python - 线性回归（Linear Regression) 的 Python 实现
-date: 2020-01-08
-edit: 2020-01-08
+date: 2020-01-14
+edit: 2020-01-14
 layout: post
 status: Writing
 categories:
