@@ -1,7 +1,7 @@
 ---
 title: Git - Git 操作问题罗列
 date: 2019-12-14
-edit: 2019-12-14
+edit: 2020-01-17
 layout: post
 status: Writing
 categories:
@@ -16,6 +16,12 @@ description: 持续记录 Git 使用中遇到的各种问题，待后续重拾�
 很多问题，如果不记下来，下次还会遇到，得重头再来，故写此文，持续记录~ 到哪天 Git 过时不用了，其实可能是我不用了~
 
 ## 问题
+
+## enable two-factor auth后，使用普通密码无法 push
+
+`Authentication failed for 'https://github.com/bemself/zh.javascript.info.git/'`
+
+这时候之前的密码无效了，得用 token。去 Github->Settings->Devloper Settings->Generate Token，然后用这个 token 即可。
 
 ## git check 其他分支提示 untracked working tree files would be overwritten
 
