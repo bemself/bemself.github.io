@@ -59,7 +59,7 @@ defaults:
       toc: true
       mathjax: true
       mermaid: false
-      highlight: false
+      highlight: true
       numbering: true
       status: Completed
       protected: false
