@@ -13,11 +13,11 @@ description:  熟悉 Random Forest 算法，初识 ensemble learning
 
 # 背景
 
-[Titanic: Machine Learning from Disaster | Kaggle](https://www.kaggle.com/c/titanic)
+[Titanic: Machine Learning from Disaster - Kaggle](https://www.kaggle.com/c/titanic)
 
 2 年前就被推荐照着这个比赛做一下，结果我打开这个页面便蒙了，完全不知道该如何下手。
 
-两年后，再次打开这个页面，看到清清楚楚的[Titanic Tutorial | Kaggle](https://www.kaggle.com/alexisbcook/titanic-tutorial)，完全傻瓜式的照着做就能做下来。当年是什么蒙蔽了我的眼睛~
+两年后，再次打开这个页面，看到清清楚楚的[Titanic Tutorial - Kaggle](https://www.kaggle.com/alexisbcook/titanic-tutorial)，完全傻瓜式的照着做就能做下来。当年是什么蒙蔽了我的眼睛~
 
 ## Target
 
@@ -25,7 +25,7 @@ use machine learning to create a model that predicts which passengers survived t
 
 ## Data
 
-[Titanic: Machine Learning from Disaster | Kaggle](https://www.kaggle.com/c/titanic/data)
+[Titanic: Machine Learning from Disaster - Kaggle](https://www.kaggle.com/c/titanic/data)
 
 - train.csv
   - Survived: 1=yes, 0=No
@@ -36,7 +36,7 @@ use machine learning to create a model that predicts which passengers survived t
 
 ## Guide to help start and follow
 
-[Titanic Tutorial | Kaggle](https://www.kaggle.com/alexisbcook/titanic-tutorial)
+[Titanic Tutorial - Kaggle](https://www.kaggle.com/alexisbcook/titanic-tutorial)
 
 - [Join the Competition Here!](https://www.kaggle.com/account/login?returnUrl=%2Fc%2Ftitanic)
 - [Submit a initial result](https://www.kaggle.com/c/titanic/submit): 
@@ -173,7 +173,7 @@ Pclass  SibSp  Parch  Sex_female  Sex_male
 
 既然是分类器算法，自然很多分类应用的场景都适合了；另外还有回归问题的场景。
 
-这篇文章[The Random Forest Algorithm: A Complete Guide | Built In](https://builtin.com/data-science/random-forest-algorithm)给出了一个实际例子的类比：
+这篇文章[The Random Forest Algorithm: A Complete Guide - Built In](https://builtin.com/data-science/random-forest-algorithm)给出了一个实际例子的类比：
 
 - 你在决定去哪儿旅行，去询问你的朋友
 - 朋友问，你以前的旅行中喜欢和不喜欢的方面都哪些
@@ -205,7 +205,7 @@ rate_men = sum(men)/len(men)
 
 - [集成学习（ensemble learning）应如何入门？ - 知乎](https://www.zhihu.com/question/29036379)
 - [Ensemble Learning》](https://link.zhihu.com/?target=http%3A//cs.nju.edu.cn/zhouzh/zhouzh.files/publication/springerEBR09.pdf)
-- [The Random Forest Algorithm: A Complete Guide | Built In](https://builtin.com/data-science/random-forest-algorithm)
+- [The Random Forest Algorithm: A Complete Guide - Built In](https://builtin.com/data-science/random-forest-algorithm)
 
 ## ChangeLog
 - 2020-01-22 init
