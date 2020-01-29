@@ -97,7 +97,6 @@ git pu origin --delete pr-branch
 
 好在还有其他办法，在[git remove branch](GIT-remove-branch.html) 一文中提到过，分支就是个指针，在系统中以文件形式存在着，所以找到 `.git/refs/remotes/origin`下面的以分支命名的文件，删掉即可: ```rm -f .git/refs/remotes/origin/pr-branch```
 
-
 ##  ChangeLog
 - 2019-12-20 update
 - 2019-12-14 init
