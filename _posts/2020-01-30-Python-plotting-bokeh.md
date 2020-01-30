@@ -118,6 +118,7 @@ Bokeh Python 库 和 Bokeh 客户端库 BokehJS（有自己的API), 负责浏览
 - [bokeh/bokeh: Interactive Data Visualization in the browser, from Python](https://github.com/bokeh/bokeh)
 - [Defining Key Concepts — Bokeh 1.4.0 documentation](https://docs.bokeh.org/en/latest/docs/user_guide/concepts.html)
 - [Pypi | 镜像站使用帮助 | 清华大学开源软件镜像站 | Tsinghua Open Source Mirror](https://mirrors.tuna.tsinghua.edu.cn/help/pypi/)
+- [Interactive Data Visualization in Python With Bokeh](https://realpython.com/python-data-visualization-bokeh/)
 
 # ChangeLog
 - 2020-01-30 init
