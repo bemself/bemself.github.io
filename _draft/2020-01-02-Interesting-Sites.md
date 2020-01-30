@@ -1,19 +1,17 @@
 ---
-title: Python 统计基础
+title: 记录一些有趣的网站
 date: 2020-01-02
 edit: 2020-01-02
 layout: post
 status: Writing
 categories:
-  - Python
+  - 有趣
 tags:
-  - Python
-description:  几个统计相关的 python 模块工具，以及可视化。
+  - 有趣
+description:  收集一些有趣的网站
 ---
 
 - [xkcd: New Year's Eve](https://xkcd.com/#)
-  - A webcomic of romance,
-sarcasm, math, and language.
-
+  - A webcomic of romance, sarcasm, math, and language.
 
 - [Math is Fun](https://www.mathsisfun.com/)
