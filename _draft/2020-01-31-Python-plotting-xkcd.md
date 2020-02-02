@@ -1,5 +1,5 @@
 ---
-title: Python 绘图 - Dash
+title: Python 绘图 - xkcd 风格
 date: 2020-01-31
 edit: 2020-01-31
 layout: post
@@ -8,7 +8,7 @@ categories:
   - Python
 tags:
   - Python
-description:  一个晚上听到了 N 种可视化工具以及风格，头脑发蒙，这么多该怎么选择？想到也许真应该从工具创作的渊源出发去了解背景，然后找应用场景。所以开始挨个工具了解一下，本文主要是 Dash
+description:  一个晚上听到了 N 种可视化工具以及风格，头脑发蒙，这么多该怎么选择？想到也许真应该从工具创作的渊源出发去了解背景，然后找应用场景。所以开始挨个工具了解一下，本文主要是 xkcd 风格的图表
 
 ---
 
