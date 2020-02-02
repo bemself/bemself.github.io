@@ -91,7 +91,7 @@ output_notebook()
 
 再比如，[Adding Widgets — Bokeh 1.4.0 documentation](https://docs.bokeh.org/en/latest/docs/user_guide/interaction/widgets.html#button)，在浏览器页面上添加 button 等控件。
 
-Bokeh Python 库 和 Bokeh 客户端库 BokehJS（有自己的API), 负责浏览器上图形的绘制和 render，所以这些交互式操作有 JS 的支持，这估计是 boken 的一大特色。
+Bokeh Python 库 和 Bokeh 客户端库 BokehJS（有自己的API), 负责浏览器上图形的绘制和 render，所以这些交互式操作有 JS 的支持，这估计是 bokeh 的一大特色。
 
 
 大致的结构和接口：
@@ -101,7 +101,7 @@ Bokeh Python 库 和 Bokeh 客户端库 BokehJS（有自己的API), 负责浏览
             |--- Documents
                     |---Models：
                           |------plots
-                                |------glyphs
+                                  |------glyphs
                           |------widgets 
                                 
                     |---Data：      图表所需的数据
@@ -117,7 +117,7 @@ Bokeh Python 库 和 Bokeh 客户端库 BokehJS（有自己的API), 负责浏览
 # References
 - [bokeh/bokeh: Interactive Data Visualization in the browser, from Python](https://github.com/bokeh/bokeh)
 - [Defining Key Concepts — Bokeh 1.4.0 documentation](https://docs.bokeh.org/en/latest/docs/user_guide/concepts.html)
-- [Pypi | 镜像站使用帮助 | 清华大学开源软件镜像站 | Tsinghua Open Source Mirror](https://mirrors.tuna.tsinghua.edu.cn/help/pypi/)
+- [Pypi  镜像站使用帮助  清华大学开源软件镜像站  Tsinghua Open Source Mirror](https://mirrors.tuna.tsinghua.edu.cn/help/pypi/)
 - [Interactive Data Visualization in Python With Bokeh](https://realpython.com/python-data-visualization-bokeh/)
 
 # ChangeLog
