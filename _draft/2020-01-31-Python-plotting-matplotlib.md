@@ -14,6 +14,7 @@ description:  一个晚上听到了 N 种可视化工具以及风格，头脑发
 
 # 背景
 
+- Dash is for creating interactive web-apps, plotly.py with matplotlib is for graphing
 # 安装
 
 # 跑个 demo
