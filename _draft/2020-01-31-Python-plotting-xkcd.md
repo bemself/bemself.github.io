@@ -32,6 +32,8 @@ user5,14
 ```
 # 
 [Data type objects (dtype) — NumPy v1.17 Manual](https://docs.scipy.org/doc/numpy/reference/arrays.dtypes.html)
+
+genfromtext 返回不同的数据类型
 # 跑个 demo
 
 # References
