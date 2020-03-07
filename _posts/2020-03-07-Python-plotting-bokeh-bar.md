@@ -113,7 +113,7 @@ df = pd.read_csv("data.csv",header=0)
 
 **取某一列**：`df['col1']`
 
-**几列求和**： df['col1'] + df['col2'] + df['col3']
+**几列求和**： `df['col1'] + df['col2'] + df['col3']`
 
 **排序**：`df = df.sort_values(by='col1', ascending=False)`
 
