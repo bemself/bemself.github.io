@@ -164,6 +164,7 @@ p.vbar(x=x, top=y, legend_label="Temp.", width=0.9)
 
 # References
 - [bokeh/bokeh: Interactive Data Visualization in the browser, from Python](https://github.com/bokeh/bokeh)
+- [数据可视化 到 可视化信息 浅述 ](http://wiki.zoomquiet.io/IMHO/data-v-info)
   
 # ChangeLog
 - 2020-03-07 init
