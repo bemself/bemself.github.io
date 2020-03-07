@@ -79,42 +79,6 @@ from bokeh.io import output_notebook
 output_notebook()
 ```
 
-# 实际应用的一些例子，断续补充
-
-## 分类数据处理
-
-如果 x 数据只是数字 如`[1,2,3]`，上面demo 中的 `p.figure`足以处理
-
-但如果 x 或 y 坐标是一些分类数据如`["apple","orange"]` ，则需要再添加 `x_range`,或 `y_range`等
-
-如 
-
-```
-fruits = ['Apples', 'Pears', 'Nectarines', 'Plums', 'Grapes', 'Strawberries']
-p = figure(x_range=fruits, ... )
-p.vbar(x=x, top=y, legend_label="Temp.", width=0.9)
-```
-
-参考 [Handling Categorical Data — Bokeh 1.4.0 documentation](https://docs.bokeh.org/en/latest/docs/user_guide/categorical.html)
-
-## colors
-[bokeh.colors — Bokeh 1.4.0 documentation](https://docs.bokeh.org/en/latest/docs/reference/colors.html)
-
-## 导出为文件
-
-- html
-
-output_file("file.html")
-
-- png
-
-- `npm install selenium phantomjs`
-- `npm install -g phantomjs-prebuilt`
-- `pip install bokeh`
-
-然后 `from bokeh.io import export_png`
-
-
 # 理解基本概念
 
 参考：[Defining Key Concepts — Bokeh 1.4.0 documentation](https://docs.bokeh.org/en/latest/docs/user_guide/concepts.html)
