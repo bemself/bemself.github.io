@@ -8,7 +8,7 @@ categories:
   - Python
 tags:
   - Python
-description:  一个晚上听到了 N 种可视化工具以及风格，头脑发蒙，这么多该怎么选择？想到也许真应该从工具创作的渊源出发去了解背景，然后找应用场景。所以开始挨个工具了解一下，本文主要是 Dash
+description:  `Dash` 不仅仅是绘图，更是一个 `Python` 框架
 
 ---
 

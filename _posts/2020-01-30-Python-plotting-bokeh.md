@@ -8,7 +8,7 @@ categories:
   - Python
 tags:
   - Python
-description:  一个晚上听到了 N 种可视化工具以及风格，头脑发蒙，这么多该怎么选择？想到也许真应该从工具创作的渊源出发去了解背景，然后找应用场景。所以开始挨个工具了解一下，本文主要是 Bokeh
+description:  焦点词：交互式，高性能，浏览器。
 
 ---
 
@@ -78,6 +78,42 @@ show(p)
 from bokeh.io import output_notebook
 output_notebook()
 ```
+
+# 实际应用的一些例子，断续补充
+
+## 分类数据处理
+
+如果 x 数据只是数字 如`[1,2,3]`，上面demo 中的 `p.figure`足以处理
+
+但如果 x 或 y 坐标是一些分类数据如`["apple","orange"]` ，则需要再添加 `x_range`,或 `y_range`等
+
+如 
+
+```
+fruits = ['Apples', 'Pears', 'Nectarines', 'Plums', 'Grapes', 'Strawberries']
+p = figure(x_range=fruits, ... )
+p.vbar(x=x, top=y, legend_label="Temp.", width=0.9)
+```
+
+参考 [Handling Categorical Data — Bokeh 1.4.0 documentation](https://docs.bokeh.org/en/latest/docs/user_guide/categorical.html)
+
+## colors
+[bokeh.colors — Bokeh 1.4.0 documentation](https://docs.bokeh.org/en/latest/docs/reference/colors.html)
+
+## 导出为文件
+
+- html
+
+output_file("file.html")
+
+- png
+
+- `npm install selenium phantomjs`
+- `npm install -g phantomjs-prebuilt`
+- `pip install bokeh`
+
+然后 `from bokeh.io import export_png`
+
 
 # 理解基本概念
 
