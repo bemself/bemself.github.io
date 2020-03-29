@@ -3,7 +3,7 @@ title: Python 绘图 - Bokeh 堆叠柱状图(stacked bar)
 date: 2020-03-07
 edit: 2020-03-07
 layout: post
-status: Writing
+status: Completed
 categories:
   - Python
 tags:
@@ -76,17 +76,25 @@ p.vbar_stack(years, x='fruits', width=0.9, color=colors, source=data,legend_labe
 
 ## 导出为文件
 [Exporting Plots — Bokeh 1.4.0 documentation](https://docs.bokeh.org/en/latest/docs/user_guide/export.html)
-- html
+
+- html，这个非常方便
 
 output_file("file.html")
 
-- png
+- png，这个需要添加 selenium 等重型依赖，因为它得在 html 基础上用 headless 浏览器解析再内存截屏。。。可以考虑用 svg 替代
 
 - `npm install selenium phantomjs`
 - `npm install -g phantomjs-prebuilt`
 - `pip install bokeh`
 
 然后 `from bokeh.io import export_png`
+
+- svg，
+  
+```
+plot.output_backend = "svg"
+export_svgs(plot, filename="fi.svg")
+```
 
 ## 数据源： 从 .csv 文件读取数据
 
@@ -167,4 +175,5 @@ p.vbar(x=x, top=y, legend_label="Temp.", width=0.9)
 - [数据可视化 到 可视化信息 浅述 ](http://wiki.zoomquiet.io/IMHO/data-v-info)
   
 # ChangeLog
+- 2020-03-29 添加输出到 svg
 - 2020-03-07 init
