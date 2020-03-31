@@ -3,7 +3,7 @@ title: Git - 删除 Git Commit 历史记录
 date: 2019-12-14
 edit: 2019-12-14
 layout: post
-status: Writing
+status: Completed
 categories:
   - Git
 tags:

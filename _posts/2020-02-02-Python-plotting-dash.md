@@ -3,7 +3,7 @@ title: Python 绘图 - Dash
 date: 2020-02-02
 edit: 2020-02-02
 layout: post
-status: Writing
+status: Completed
 categories:
   - Python
 tags:

@@ -3,7 +3,7 @@ title: 我的第一个 Kaggle 比赛学习 - Titanic
 date: 2020-01-25
 edit: 2020-01-25
 layout: post
-status: Writing
+status: Completed
 categories:
   - Python, ML,Kaggle
 tags:
