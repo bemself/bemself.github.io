@@ -3,7 +3,7 @@ title: Git - 从历史中真正删除文件
 date: 2020-01-10
 edit: 2020-01-10
 layout: post
-status: Writing
+status: Completed
 categories:
   -  Git
 tags:

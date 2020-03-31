@@ -3,7 +3,7 @@ title: Python - 在 VSCode 中配置和运行 Jupyter Notebook
 date: 2020-01-30
 edit: 2020-01-30
 layout: post
-status: Writing
+status: Completed
 categories:
   - Python
 tags:

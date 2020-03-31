@@ -3,7 +3,7 @@ title: Map, Filter, Reduce
 date: 2020-01-10
 edit: 2020-01-22
 layout: post
-status: Writing
+status: Completed
 categories:
   - Python, Java, Lisp
 tags:

@@ -3,7 +3,7 @@ title: Python - 记录一次用 shutil 复制目录的囧
 date: 2020-01-30
 edit: 2020-01-30
 layout: post
-status: Writing
+status: Completed
 categories:
   - Python
 tags:

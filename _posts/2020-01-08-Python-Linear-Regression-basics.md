@@ -3,7 +3,7 @@ title: Python 线性回归（Linear Regression) 基本理解
 date: 2020-01-08
 edit: 2020-01-08
 layout: post
-status: Writing
+status: Completed
 categories:
   - Python
 tags:
