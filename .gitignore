@@ -2,3 +2,7 @@ _site
 .sass-cache
 node_modules
 .DS_STORE
+_includes/
+secret/
+. .. ._.markdown ._LICENSE.md ._README.md ._robots.txt .git .gitignore .markdown
+.*
