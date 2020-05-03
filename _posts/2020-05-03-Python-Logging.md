@@ -188,6 +188,7 @@ logger.debug(f"LOG_FILE: , {LOG_FILE}")
 
 main.py 启动 flask app
 
+```
 .root
 ├── logging.conf
 ├── logging.yml
@@ -213,6 +214,7 @@ main.py 启动 flask app
             ├── data
             ├── docs
             ├── invoke.yml
+```
 
 # 附录: logging.ini sample (摘自网络),
 
