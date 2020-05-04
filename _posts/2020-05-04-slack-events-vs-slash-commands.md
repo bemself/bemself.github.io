@@ -1,5 +1,5 @@
 ---
-title:  Slack 交互: bot, slash command, events, RTM 之简单区别
+title:  Slack 交互- bot, slash command, events, RTM 之简单区别
 date:  2020-05-04 11:00:55
 edit:  2020-05-04 11:00:59
 layout: post
