@@ -166,7 +166,7 @@ logger = app.logger
 - [logging — Logging facility for Python — Python 3.8.3rc1 documentation](https://docs.python.org/3/library/logging.html)
 - [Logging — The Hitchhiker's Guide to Python](https://docs.python-guide.org/writing/logging/)
 
-## flask logging
+## flask logging[python 测试之 pytest flask app 初探](/0-doituself.gitlab.io/docs/0-Diary-Tech/Auto-Deployment/blog/2020-05-02-Test-Flask-App.md)
 [Logging — Flask Documentation (1.1.x)](https://flask.palletsprojects.com/en/1.1.x/logging/)
 
 # 附录: 大致的目录结构
