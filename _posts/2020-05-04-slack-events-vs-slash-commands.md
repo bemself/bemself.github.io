@@ -79,7 +79,7 @@ slack 与第三方应用程序交互, 目前看起来有三种交互方式:
 
 # Reference
 
-- [Events API](https://api.slack.com/events-api) you must [create a Slack App](https://api.slack.com/apps/new)
+- [Events API](https://api.slack.com/events-api) 
 - [Serverless Slash Commands with Python - Renzo Lucioni](https://renzo.lucioni.xyz/serverless-slash-commands-with-python/)
 - [slackapi/python-slackclient: Slack Python SDK https://slack.dev/python-slackclient/](https://github.com/slackapi/python-slackclient)
 - [Botkit and Slack - Botkit Documentation](https://botkit.ai/docs/v0/readme-slack.html)
