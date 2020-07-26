@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="generator" content="TiddlyWiki" />
+<meta name="tiddlywiki-version" content="5.1.22" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="mobile-web-app-capable" content="yes"/>
+<meta name="format-detection" content="telephone=no">
+<link id="faviconLink" rel="shortcut icon" href="favicon.ico">
+<link rel="stylesheet" href="static.css">
+<title>python/plotting-bokeh-bar: My Struggle — Life goes on...</title>
+</head>
+<body class="tc-body">
+
+<section class="tc-story-river">
+<p><div class="tc-tiddler-frame tc-tiddler-view-frame tc-tiddler-exists " data-tags="" data-tiddler-title="python/plotting-bokeh-bar"><div class="tc-tiddler-title"><div class="tc-titlebar"><span class="tc-tiddler-controls"><span class=" tc-reveal"><button aria-label="more" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fmore-tiddler-actions" title="More actions"></button><div class=" tc-reveal" hidden="true"></div></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal"><button aria-label="edit" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fedit" title="Edit this tiddler"></button></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal"><button aria-label="close" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fclose" title="Close this tiddler"></button></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span></span><span><span class="tc-tiddler-title-icon" style="fill:;"></span><h2 class="tc-title">python/plotting-bokeh-bar</h2></span></div><div class="tc-tiddler-info tc-popup-handle tc-reveal" hidden="true"></div></div><div class=" tc-reveal" hidden="true"></div>
+<div class=" tc-reveal"><div class="tc-subtitle"><a class="tc-tiddlylink tc-tiddlylink-missing" href=".html"></a>26th July 2020</div></div><div class=" tc-reveal">
+<div class="tc-tags-wrapper"></div>
+</div>
+
+<div class="tc-tiddler-body tc-reveal"><hr><p>title: Python 绘图 - Bokeh 堆叠柱状图(stacked bar)<br>date: 2020-03-07<br>edit: 2020-03-07<br>layout: post<br>status: Completed<br>categories:</p><ul><li><p>Python<br>tags:</p></li><li><p>Python<br>description:  在 <a href="https://bemself.github.io/python/Python-plotting-bokeh.html" target="_blank">Bokeh 初探</a>之后，学习使用它来做个堆叠柱状图</p></li></ul><hr><h1>背景</h1><p>在 <a href="https://bemself.github.io/python/Python-plotting-bokeh.html" target="_blank">Bokeh 初探</a>之后，学习使用它来做个图</p><h1>目标</h1><p>做一个柱状图，支持多个 y 数据源，即有堆叠效果的柱状图 stacked bar</p><h1>实现</h1><h2>单数据源 简单的柱状图</h2><p>参考 <a href="https://docs.bokeh.org/en/latest/docs/user_guide/categorical.html" target="_blank">Handling Categorical Data — Bokeh 1.4.0 documentation</a></p><pre><code>from bokeh.io import show, output_file
+from bokeh.plotting import figure
+
+output_file(&quot;bars.html&quot;)
+
+fruits = ['Apples', 'Pears', 'Nectarines', 'Plums', 'Grapes', 'Strawberries']
+counts = [5, 3, 4, 2, 4, 6]
+
+p = figure(x_range=fruits, plot_height=250, title=&quot;Fruit Counts&quot;, toolbar_location=None, tools=&quot;&quot;)
+
+p.vbar(x=fruits, top=counts, width=0.9)
+
+p.xgrid.grid_line_color = None
+p.y_range.start = 0
+
+show(p)
+</code></pre><p>效果图见上述参考</p><h2>增加一个 y 数据源，做堆叠效果</h2><p>这样的话，需要考虑：</p><ul><li><p>数据源：不能是单一的列表了，得能容纳多组数据。用字典。</p></li></ul><pre><code>fruits = ['Apples', 'Pears', 'Nectarines', 'Plums', 'Grapes', 'Strawberries']
+years = [&quot;2015&quot;, &quot;2016&quot;, &quot;2017&quot;]
+
+data = {'fruits' : fruits,
+        '2015'   : [2, 1, 4, 3, 2, 4],
+        '2016'   : [5, 3, 4, 2, 4, 6],
+        '2017'   : [3, 2, 4, 4, 5, 3]}
+</code></pre><ul><li><p>颜色：区分不同的数据源</p></li></ul><p><code>colors = [&quot;green&quot;, &quot;#718dbf&quot;, &quot;#e84d60&quot;,&quot;#e84d20&quot;,&quot;#e84361&quot;]</code></p><p>配色是个问题，一不小心就会很丑，后面会提到用调色板 <code>palette</code></p><ul><li><p>画图：上面的<code>vbar</code>不支持堆叠</p></li></ul><pre><code>p.vbar_stack(years, x='fruits', width=0.9, color=colors, source=data,legend_label=years)
+</code></pre><h2>导出为文件</h2><p><a href="https://docs.bokeh.org/en/latest/docs/user_guide/export.html" target="_blank">Exporting Plots — Bokeh 1.4.0 documentation</a></p><ul><li><p>html，这个非常方便</p></li></ul><p>output_file(&quot;file.html&quot;)</p><ul><li><p>png，这个需要添加 selenium 等重型依赖，因为它得在 html 基础上用 headless 浏览器解析再内存截屏。。。可以考虑用 svg 替代</p></li><li><p><code>npm install selenium phantomjs</code></p></li><li><p><code>npm install -g phantomjs-prebuilt</code></p></li><li><p><code>pip install bokeh</code></p></li></ul><p>然后 <code>from bokeh.io import export_png</code></p><ul><li><p>svg，</p></li></ul><pre><code>plot.output_backend = &quot;svg&quot;
+export_svgs(plot, filename=&quot;fi.svg&quot;)
+</code></pre><h2>数据源： 从 .csv 文件读取数据</h2><p>我试过两种方式，现在用的是第二种 pandas</p><ul><li><p><strong>numpy 的 <code>genfromtxt</code></strong></p></li></ul><p>但是我遇到很多问题，包括不同的 dtype参数，names参数等，返回不同的数据类型的 array，感觉很不方便（如排序等），所以后来弃用了，当然也是因为我不太熟。</p><pre><code>from numpy import genfromtxt
+    my_data = genfromtxt(&quot;data.csv&quot;, delimiter=',', dtype=None, encoding=&quot;utf8&quot;)
+</code></pre><ul><li><p><strong>pandas</strong></p></li></ul><p>还是这个方便，读取文件 :</p><pre><code>df = pd.read_csv(&quot;data.csv&quot;,header=0)
+</code></pre><p><strong>取前 7 行</strong>：<code>df = df.head(n=7)</code></p><p><strong>取某一列</strong>：<code>df['col1']</code></p><p><strong>几列求和</strong>： <code>df['col1'] + df['col2'] + df['col3']</code></p><p><strong>排序</strong>：<code>df = df.sort_values(by='col1', ascending=False)</code></p><h2>x axis 旋转</h2><p><a href="https://docs.bokeh.org/en/latest/docs/user_guide/styling.html#tick-label-orientation" target="_blank">Styling Visual Attributes — Bokeh 1.4.0 documentation</a></p><p>比如左斜 旋转 45 度：</p><pre><code>    p.xaxis.major_label_orientation = 360-45
+</code></pre><h2>调色板</h2><p>前面我们用 <code>colors = [&quot;green&quot;, &quot;#718dbf&quot;, &quot;#e84d60&quot;,&quot;#e84d20&quot;,&quot;#e84361&quot;]</code> 人工配色，会很丑不专业，bokeh 有自带的调色板，倒是很方便，还好看。</p><pre><code>&gt;&gt;&gt; from bokeh.palettes import brewer
+&gt;&gt;&gt; colors = brewer[&quot;Blues&quot;][6]
+&gt;&gt;&gt; colors
+['#08519c', '#3182bd', '#6baed6', '#9ecae1', '#c6dbef', '#eff3ff']
+</code></pre><p>具体列表参考：</p><ul><li><p><a href="https://docs.bokeh.org/en/latest/docs/reference/palettes.html" target="_blank">bokeh.palettes</a></p></li><li><p><a href="https://github.com/bokeh/bokeh/blob/master/bokeh/palettes.py" target="_blank">源码：bokeh/palettes.py at master · bokeh/bokeh</a></p></li><li><p><a href="https://docs.bokeh.org/en/latest/docs/reference/colors.html" target="_blank">bokeh.colors — Bokeh 1.4.0 documentation</a></p></li></ul><h2>分类数据处理</h2><p>如果 x 数据只是数字 如<code>[1,2,3]</code>，上面demo 中的 <code>p.figure</code>足以处理</p><p>但如果 x 或 y 坐标是一些分类数据如<code>[&quot;apple&quot;,&quot;orange&quot;]</code> ，则需要再添加 <code>x_range</code>,或 <code>y_range</code>等</p><p>如</p><pre><code>fruits = ['Apples', 'Pears', 'Nectarines', 'Plums', 'Grapes', 'Strawberries']
+p = figure(x_range=fruits, ... )
+p.vbar(x=x, top=y, legend_label=&quot;Temp.&quot;, width=0.9)
+</code></pre><p>参考 <a href="https://docs.bokeh.org/en/latest/docs/user_guide/categorical.html" target="_blank">Handling Categorical Data — Bokeh 1.4.0 documentation</a></p><h1>References</h1><ul><li><p><a href="https://github.com/bokeh/bokeh" target="_blank">bokeh/bokeh: Interactive Data Visualization in the browser, from Python</a></p></li><li><p><a href="http://wiki.zoomquiet.io/IMHO/data-v-info" target="_blank">数据可视化 到 可视化信息 浅述 </a></p></li></ul><h1><a class="tc-tiddlylink tc-tiddlylink-missing" href="ChangeLog.html">ChangeLog</a></h1><ul><li><p>2020-03-29 添加输出到 svg</p></li><li><p>2020-03-07 init</p></li></ul></div>
+
+
+
+</div>
+
+</p>
+</section>
+</body>
+</html>

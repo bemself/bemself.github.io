@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="generator" content="TiddlyWiki" />
+<meta name="tiddlywiki-version" content="5.1.22" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="mobile-web-app-capable" content="yes"/>
+<meta name="format-detection" content="telephone=no">
+<link id="faviconLink" rel="shortcut icon" href="favicon.ico">
+<link rel="stylesheet" href="static.css">
+<title>python/debug: My Struggle — Life goes on...</title>
+</head>
+<body class="tc-body">
+
+<section class="tc-story-river">
+<p><div class="tc-tiddler-frame tc-tiddler-view-frame tc-tiddler-exists " data-tags="" data-tiddler-title="python/debug"><div class="tc-tiddler-title"><div class="tc-titlebar"><span class="tc-tiddler-controls"><span class=" tc-reveal"><button aria-label="more" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fmore-tiddler-actions" title="More actions"></button><div class=" tc-reveal" hidden="true"></div></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal"><button aria-label="edit" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fedit" title="Edit this tiddler"></button></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal"><button aria-label="close" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fclose" title="Close this tiddler"></button></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span></span><span><span class="tc-tiddler-title-icon" style="fill:;"></span><h2 class="tc-title">python/debug</h2></span></div><div class="tc-tiddler-info tc-popup-handle tc-reveal" hidden="true"></div></div><div class=" tc-reveal" hidden="true"></div>
+<div class=" tc-reveal"><div class="tc-subtitle"><a class="tc-tiddlylink tc-tiddlylink-missing" href=".html"></a>26th July 2020</div></div><div class=" tc-reveal">
+<div class="tc-tags-wrapper"></div>
+</div>
+
+<div class="tc-tiddler-body tc-reveal"><hr><p>title: Python 调试简便大法<br>date: 2020-03-29<br>edit: 2020-03-29<br>layout: post<br>status: Completed<br>categories:</p><ul><li><p>Python<br>tags:</p></li><li><p>Python<br>description:  python 调试，其实就是 print 大法，加上...</p></li></ul><hr><p>初始刚接触 python 的时候，出错调试的时候，颇有些不习惯。以前用 IDE 习惯加断点调试，而 python 初学的时候就被各种建议，不要用 IDE，不要用 IDE...，于是 sublime，vscode 都用过了，对加断点调试绝了念头（不会用）。</p><p>现在，即使在 pycharm 中，也习惯不加断点调试了。</p><p>因为，越来越觉得 print 确实是大法，很好用。</p><p>而且，再加上两个大法，更爽。</p><ol><li><p>print 之后 加 return</p></li></ol><p>如果只是跑一个 func，在出错的某行加了 print，可以在之后加 return，后面的代码就不会跑了，直接看打印出来的结果查错。</p><ol><li><p>print 之后 加 quit()</p></li></ol><p>复杂一点的，可能嵌套在或嵌套了其他 func，那就在 print 之后粗暴的 quit()就好了。</p><p>不过，print 也是有技巧的，如果输出是长串 json 格式的数据呢？如果是很长的文本呢？</p><p>这就可以用 python 自带的一些方法了：</p><ul><li><p><a href="https://docs.python.org/3/library/pprint.html#pprint.pprint" target="_blank">pprint</a>来美化输出如 json 格式，当然必要的时候输出到文件看更方便。</p></li><li><p><a href="https://docs.python.org/3/library/textwrap.html" target="_blank">textwrap — Text wrapping and filling — Python 3.8.2 documentation</a><br>亦或，如果输出的文本很长，想 wrap 一下，或者保留某种格式输出，可以用 python 自带的</p></li></ul><pre><code>from textwrap import dedent
+def test():
+    # end first line with \ to avoid the empty line!
+    s = '''\
+    hello
+      world
+    '''
+    print(repr(s))          # prints '    hello\n      world\n    '
+    print(repr(dedent(s)))  # prints 'hello\n  world\n'
+</code></pre><p>当然，这也有个人习惯的问题，以及项目大小的问题（我当然没做过大项目了，所以此大法用着很爽），也有很多 python 调试的工具，比如:</p><ul><li><p><a href="https://docs.python.org/3/library/pdb.html" target="_blank">pdb — The Python Debugger — Python 3.8.2 documentation</a>,</p></li><li><p><a href="https://docs.python.org/3/library/logging.html" target="_blank">logging — Logging facility for Python — Python 3.8.2 documentation</a></p><ul><li><p>专业一点的话，还是建议多打 log</p></li></ul></li></ul></div>
+
+
+
+</div>
+
+</p>
+</section>
+</body>
+</html>

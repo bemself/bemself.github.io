@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="generator" content="TiddlyWiki" />
+<meta name="tiddlywiki-version" content="5.1.22" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="mobile-web-app-capable" content="yes"/>
+<meta name="format-detection" content="telephone=no">
+<link id="faviconLink" rel="shortcut icon" href="favicon.ico">
+<link rel="stylesheet" href="static.css">
+<title>jenkins/Pass-Parameter-to-downstream: My Struggle — Life goes on...</title>
+</head>
+<body class="tc-body">
+
+<section class="tc-story-river">
+<p><div class="tc-tiddler-frame tc-tiddler-view-frame tc-tiddler-exists " data-tags="" data-tiddler-title="jenkins/Pass-Parameter-to-downstream"><div class="tc-tiddler-title"><div class="tc-titlebar"><span class="tc-tiddler-controls"><span class=" tc-reveal"><button aria-label="more" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fmore-tiddler-actions" title="More actions"></button><div class=" tc-reveal" hidden="true"></div></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal"><button aria-label="edit" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fedit" title="Edit this tiddler"></button></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal"><button aria-label="close" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fclose" title="Close this tiddler"></button></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span></span><span><span class="tc-tiddler-title-icon" style="fill:;"></span><h2 class="tc-title">jenkins/Pass-Parameter-to-downstream</h2></span></div><div class="tc-tiddler-info tc-popup-handle tc-reveal" hidden="true"></div></div><div class=" tc-reveal" hidden="true"></div>
+<div class=" tc-reveal"><div class="tc-subtitle"><a class="tc-tiddlylink tc-tiddlylink-missing" href=".html"></a>26th July 2020</div></div><div class=" tc-reveal">
+<div class="tc-tags-wrapper"></div>
+</div>
+
+<div class="tc-tiddler-body tc-reveal"><hr><p>title: Jenkins - pass parameters to downstream<br>edit: 2018-08-10<br>layout: post<br>categories:</p><ul><li><p>Python<br>tags:</p></li><li><p>Python<br>description: Jenkins持续集成。After Jenkins is upgraded from 1.0 to 2.0, our master job stops to pass parameter values to its downstream jobs. Here is to solve this problem</p></li></ul><hr><h1>Background</h1><p>After Jenkins is upgraded from 1.0 to 2.0, our master job stops to pass parameter values to its downstream jobs.</p><p>When in Jenkins 1.0, we have a master-slave job definitions, where a BUILD_PATH parameter is defined in master job, and its value will be passed directly to the slaves at runtime. On the slave machines, no additional work is needed except referencing it in the build steps, e.g. %BUILD_PATH % a windows batch command step.</p><p>But this stopped working in Jenkins 2.0</p><h1>Analysis</h1><p>In Jenkins 2.0, with <a href="https://wiki.jenkins.io/display/JENKINS/Parameterized+Trigger+Plugin" target="_blank">Parameterized Trigger</a> plugin, when you want to pass a parameter to downstream,</p><blockquote><p>**<em>*</em> YOU MUST DEFINE THE PARAMETER IN DOWNSTREAM JOBS VIA  &quot;This project is parameterized&quot;. For example, if job1 passes ABC=123 to job2 then in job2 mark the job as &quot;This project is parameterized&quot; and &quot;Add Parameter&quot; named &quot;ABC&quot;. *****</p></blockquote><p>So modification is needed on the downstream jobs as well.</p><h1>Solution</h1><p>Two places to take care and be modified:</p><ul><li><p>On the master job,</p><ul><li><p>define the parameter in the Parameterized section</p></li><li><p>Add &quot;Current Build Parameter&quot; in the Trigger Build Step section</p></li></ul></li><li><p>On the slave job, add a parameter with the same name as the one on master job</p></li></ul><p>Now it should ok to go.</p></div>
+
+
+
+</div>
+
+</p>
+</section>
+</body>
+</html>

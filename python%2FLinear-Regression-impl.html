@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="generator" content="TiddlyWiki" />
+<meta name="tiddlywiki-version" content="5.1.22" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="mobile-web-app-capable" content="yes"/>
+<meta name="format-detection" content="telephone=no">
+<link id="faviconLink" rel="shortcut icon" href="favicon.ico">
+<link rel="stylesheet" href="static.css">
+<title>python/Linear-Regression-impl: My Struggle — Life goes on...</title>
+</head>
+<body class="tc-body">
+
+<section class="tc-story-river">
+<p><div class="tc-tiddler-frame tc-tiddler-view-frame tc-tiddler-exists " data-tags="" data-tiddler-title="python/Linear-Regression-impl"><div class="tc-tiddler-title"><div class="tc-titlebar"><span class="tc-tiddler-controls"><span class=" tc-reveal"><button aria-label="more" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fmore-tiddler-actions" title="More actions"></button><div class=" tc-reveal" hidden="true"></div></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal"><button aria-label="edit" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fedit" title="Edit this tiddler"></button></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal"><button aria-label="close" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fclose" title="Close this tiddler"></button></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span></span><span><span class="tc-tiddler-title-icon" style="fill:;"></span><h2 class="tc-title">python/Linear-Regression-impl</h2></span></div><div class="tc-tiddler-info tc-popup-handle tc-reveal" hidden="true"></div></div><div class=" tc-reveal" hidden="true"></div>
+<div class=" tc-reveal"><div class="tc-subtitle"><a class="tc-tiddlylink tc-tiddlylink-missing" href=".html"></a>26th July 2020</div></div><div class=" tc-reveal">
+<div class="tc-tags-wrapper"></div>
+</div>
+
+<div class="tc-tiddler-body tc-reveal"><hr><p>title: Python - 线性回归（Linear Regression) 的 Python 实现<br>date: 2020-01-14<br>edit: 2020-01-14<br>layout: post<br>status: Completed<br>categories:</p><ul><li><p>Python<br>tags:</p></li><li><p>Python<br>description:  在 Python 中如何实现线性回归？很简单，有不错的包和函数~</p></li></ul><hr><h1>背景</h1><p>学习 <a href="https://realpython.com/linear-regression-in-python/" target="_blank">Linear Regression in Python – Real Python</a>，前面几篇文章分别讲了“regression怎么理解“，”线性回归怎么理解“，现在该是实现的时候了。</p><h1>线性回归的 Python 实现：基本思路</h1><ul><li><p>导入 Python 包: 有哪些包推荐呢？</p><ul><li><p><code>Numpy</code>：数据源</p></li><li><p><a href="https://scikit-learn.org/stable/" target="_blank"><code>scikit-learn</code></a>：ML</p></li><li><p><a href="https://www.statsmodels.org/stable/index.html" target="_blank"><code>statsmodels</code></a>: 比 <code>scikit-learn</code> 功能更强大</p></li></ul></li><li><p>准备数据</p></li><li><p>建模拟合</p></li><li><p>验证模型的拟合度</p></li><li><p>预测：用模型来预测新的数据</p></li></ul><h1>实现细节</h1><p>以最简单的线性回归为例，代码参考的是原文。</p><p>重点是掌握基本思路，以及关键的几个函数。影响拟合度的因素很多，数据源首当其冲，模型的选择也是关键，这些在实际应用中具体讨论，这里就简单的对应前面的基本思路将 sample 代码及运行结果贴一下，稍加解释。</p><h2>安装并导入包</h2><p>根据自己的需要导入</p><pre><code>pip install scikit-learn
+pip install numpy
+pip install statsmodels
+
+from sklearn.preprocessing import PolynomialFeatures
+import numpy as np
+from sklearn.linear_model import LinearRegression
+import statsmodels.api as sm
+</code></pre><h2>准备数据</h2><p>&quot;&quot;&quot; prepare data<br>x: regressor<br>y: predictor<br>reshape: make it two dimentional - one column and many rows<br>y can also be 2 dimensional<br>&quot;&quot;&quot;</p><pre><code>x = np.array([5, 15, 25, 35, 45, 55]).reshape((-1, 1))
+&quot;&quot;&quot;
+[[ 5]
+ [15]
+ [25]
+ [35]
+ [45]
+ [55]] 
+&quot;&quot;&quot;
+y = np.array([5, 20, 14, 32, 22, 38])
+print(x, y)
+# [ 5 20 14 32 22 38]
+</code></pre><h2>建模</h2><pre><code>'''create a model and fit it'''
+model = LinearRegression()
+model = model.fit(x, y)
+print(model)
+# LinearRegression(copy_X=True, fit_intercept=True, n_jobs=None, normalize=False)
+</code></pre><h2>验证模型的拟合度</h2><pre><code>'''get result
+y = b0 + b1x
+'''
+r_sq = model.score(x, y)
+print('coefficient of determination(𝑅²) :', r_sq)
+# coefficient of determination(𝑅²) : 0.715875613747954
+print('intercept:', model.intercept_)
+# （标量） 系数b0 intercept: 5.633333333333329 -------this will be an array when y is also 2-dimensional
+print('slope:', model.coef_)
+# （数组）斜率b1 slope: [0.54]        ---------this will be 2-d array when y is also 2-dimensional
+</code></pre><h2>预测</h2><pre><code>'''predict response
+given x, get y from the model y = b0+b1x
+'''
+y_pred = model.predict(x)
+print('predicted response:', y_pred, sep='\n')
+#predicted response:
+#[8.33333333 13.73333333 19.13333333 24.53333333 29.93333333 35.33333333]
+
+'''forecast'''
+z = np.arange(5).reshape((-1, 1))
+y = model.predict(z)
+print(y)
+#[5.63333333 6.17333333 6.71333333 7.25333333 7.79333333]
+</code></pre><h1>问题</h1><h1>Reference</h1><ul><li><p><a href="https://realpython.com/linear-regression-in-python/" target="_blank">Linear Regression in Python – Real Python</a></p></li></ul><h1>Changelog</h1><ul><li><p>2020-01-14 init</p></li></ul></div>
+
+
+
+</div>
+
+</p>
+</section>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="generator" content="TiddlyWiki" />
+<meta name="tiddlywiki-version" content="5.1.22" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="mobile-web-app-capable" content="yes"/>
+<meta name="format-detection" content="telephone=no">
+<link id="faviconLink" rel="shortcut icon" href="favicon.ico">
+<link rel="stylesheet" href="static.css">
+<title>python/Copy-Files-Recursively: My Struggle — Life goes on...</title>
+</head>
+<body class="tc-body">
+
+<section class="tc-story-river">
+<p><div class="tc-tiddler-frame tc-tiddler-view-frame tc-tiddler-exists " data-tags="" data-tiddler-title="python/Copy-Files-Recursively"><div class="tc-tiddler-title"><div class="tc-titlebar"><span class="tc-tiddler-controls"><span class=" tc-reveal"><button aria-label="more" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fmore-tiddler-actions" title="More actions"></button><div class=" tc-reveal" hidden="true"></div></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal"><button aria-label="edit" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fedit" title="Edit this tiddler"></button></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal"><button aria-label="close" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fclose" title="Close this tiddler"></button></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span></span><span><span class="tc-tiddler-title-icon" style="fill:;"></span><h2 class="tc-title">python/Copy-Files-Recursively</h2></span></div><div class="tc-tiddler-info tc-popup-handle tc-reveal" hidden="true"></div></div><div class=" tc-reveal" hidden="true"></div>
+<div class=" tc-reveal"><div class="tc-subtitle"><a class="tc-tiddlylink tc-tiddlylink-missing" href=".html"></a>26th July 2020</div></div><div class=" tc-reveal">
+<div class="tc-tags-wrapper"></div>
+</div>
+
+<div class="tc-tiddler-body tc-reveal"><hr><p>title: Python - 记录一次用 shutil 复制目录的囧<br>date: 2020-01-30<br>edit: 2020-01-30<br>layout: post<br>status: Completed<br>categories:</p><ul><li><p>Python<br>tags:</p></li><li><p>Python<br>description:  如何将目录中的所有文件（包括子目录）复制到其他路径中？python 有几种方法，分别尝试下。教训是，复制之前最好分析下文件结构，把一些干扰项如 <code>.git</code> 过滤掉。</p></li></ul><hr><h1>背景</h1><p>做工具的时候，遇到这种需求：将目录 A 复制到目录 B。</p><p>需求简单，但可能有多种情况：</p><ul><li><p>目录 A 包含子目录吗</p><ul><li><p>如果只需要复制 A 中的文件呢？</p></li><li><p>是否有文件需要过滤掉？</p></li></ul></li><li><p>目录 B 是否已存在</p></li><li><p>...</p></li></ul><p>比如，我做的时候遇到一个问题， 我的目录 A 中含有隐藏的 <code>.git</code> 目录，结果我忘记了，直接复制覆盖了目录 B 中的 <code>.git</code>, 然后 git 提交后发现把 A 指向的仓库给改掉了。这个可囧了。</p><p>所以在做之前，<strong>先分析一下文件结构很重要</strong></p><h1>分析文件结构</h1><p>如前所述，我的目录中有<code>.git</code>目录需要过滤掉。其他都还好。</p><h1>探索</h1><p>找 python 中有哪些模块可以复制目录。</p><ul><li><p><strong><a href="https://docs.python.org/2.4/dist/module-distutils.dirutil.html" target="_blank">distutils.dir_util copy_tree</a></strong></p></li></ul><pre><code>from distutils.dir_util import copy_tree
+</code></pre><p>python 自带，用起来也很方便，</p><blockquote><p>copy_tree(    src, dst[preserve_mode=1, preserve_times=1, preserve_symlinks=0, update=0, verbose=0, dry_run=0])<br>every file in src is copied to dst, and directories under src are recursively copied to dst. Return the list of files that were copied or might have been copied, using their output name.</p></blockquote><p>然而，无法过滤指定的目录或文件。</p><ul><li><p><strong><a href="https://docs.python.org/3.7/library/shutil.html" target="_blank">shutil</a></strong></p></li></ul><blockquote><p>shutil.copytree(src, dst, symlinks=False, ignore=None, copy_function=copy2, ignore_dangling_symlinks=False)</p></blockquote><pre>Recursively copy an entire directory tree rooted at src, returning the destination directory. The destination directory, named by dst, **must not already exist**; 
+</pre><p>分析：</p><ul><li><p>可以将目录A下的所有文件和子目录们都复制到 B，满足需求</p></li><li><p>有 <code>ignore pattern</code>, 可以 过滤掉 <code>.git</code>目录，满足需求</p></li><li><p>但是问题是：目标路径<code>dst</code>必须不能已存在，否则会报错。不满足需求</p><ul><li><p>不过，python 3.8 解决了这个问题，提供了<code>dirs_exist_ok=False</code>参数。</p></li><li><p>但我本地还是 3.7，尚不想换到 3.8</p></li><li><p>只好先删除 B 再复制</p></li></ul></li></ul><p>sample 代码：</p><pre><code>if os.path.exists(dst):
+  shutil.rmtree(dst, ignore_errors=False)
+  shutil.copytree(src, dst,ignore=shutil.ignore_patterns(&quot;.git&quot;))
+</code></pre><ul><li><p>自己写 loop，比如用 <a href="https://docs.python.org/3.7/library/os.html?highlight=os%20walk#os.walk" target="_blank">os.walk</a> 或者 <a href="https://docs.python.org/3.7/library/glob.html" target="_blank">glob.glob</a></p></li></ul><p>不详述了。建议是，能不造轮子就不造。但，如果是初学者，自己写则非常推荐。</p><h1>Changelog</h1><ul><li><p>2020-01-30 init</p></li></ul></div>
+
+
+
+</div>
+
+</p>
+</section>
+</body>
+</html>
