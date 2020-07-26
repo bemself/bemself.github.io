@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="generator" content="TiddlyWiki" />
+<meta name="tiddlywiki-version" content="5.1.22" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="mobile-web-app-capable" content="yes"/>
+<meta name="format-detection" content="telephone=no">
+<link id="faviconLink" rel="shortcut icon" href="favicon.ico">
+<link rel="stylesheet" href="static.css">
+<title>life/Learn-from-using: My Struggle — Life goes on...</title>
+</head>
+<body class="tc-body">
+
+<section class="tc-story-river">
+<p><div class="tc-tiddler-frame tc-tiddler-view-frame tc-tiddler-exists " data-tags="" data-tiddler-title="life/Learn-from-using"><div class="tc-tiddler-title"><div class="tc-titlebar"><span class="tc-tiddler-controls"><span class=" tc-reveal"><button aria-label="more" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fmore-tiddler-actions" title="More actions"></button><div class=" tc-reveal" hidden="true"></div></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal"><button aria-label="edit" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fedit" title="Edit this tiddler"></button></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal"><button aria-label="close" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fclose" title="Close this tiddler"></button></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span></span><span><span class="tc-tiddler-title-icon" style="fill:;"></span><h2 class="tc-title">life/Learn-from-using</h2></span></div><div class="tc-tiddler-info tc-popup-handle tc-reveal" hidden="true"></div></div><div class=" tc-reveal" hidden="true"></div>
+<div class=" tc-reveal"><div class="tc-subtitle"><a class="tc-tiddlylink tc-tiddlylink-missing" href=".html"></a>26th July 2020</div></div><div class=" tc-reveal">
+<div class="tc-tags-wrapper"></div>
+</div>
+
+<div class="tc-tiddler-body tc-reveal"><hr><p>title: 开发供应商和用户：解决问题？发现问题？<br>date: 2019-12-20<br>edit: 2019-12-20<br>layout: post<br>status: Completed<br>categories:</p><ul><li><p>心路<br>tags:</p></li><li><p>心路<br>description: 最近连续两件事体会到“用”起来的感觉，用了才知道你做的东西究竟能派上多大用场， 才知道原来还有那么多没想到~</p></li></ul><hr><h1>背景</h1><p>最近在蟒营和工作中都实际遇到了“开发”和“使用”的冲突，自己做的千好万好把握满满，放到用户那儿却千疮百孔，才真的体会到大妈说的：</p><blockquote><p>你的工具, 如果第一时间没用起来,<br>那么, 大家可能转头就先用自己的方式解决了...<br>可一解决, 研究你工具的任务优先级又下降...<br>如此反复....<br>这也是为什么平时, 在工作中, 自己的工具并没逐一落实为组织工具的原因....</p></blockquote><p>所以记录一下。</p><h2>蟒营 pow</h2><p>感觉自己还挺喜欢码代码的，晚上和周末折腾蟒营的 pow 工具不亦乐乎，搬大妈代码，改大妈代码，加自己的代码，改自己的代码，终于有个成型，自己跑的没啥问题，就等大妈用了。</p><p>结果大妈一直也没见用，依然在跑他自己的那套~，尴尬的很，实在忍不住了，便直接了当问大妈了~</p><p>然而，原来是，大妈跑我的代码各种不顺啊啊啊，然后又不见我在固定时间跑，而 <code>每周出图表是有时间窗口的, 过时失实...</code>, ...</p><p>所以，用大妈的话说，我把自己当 <code>开发供应商</code> 了，忘了其实还有个身份：<code>用户</code>。恍悟，以前一直跟人家解释开发和测试的不同，总喜欢讲一点：测试是站在用户角度看问题的，开发不是~。真的自己开始做点开发的时候，就忘了 哈哈。还犯了一个开发的毛病，<code>bug 不可能，我这儿跑的没问题啊。。。</code></p><p>自己的代码别人跑不起来，就是问题，总是某个环节不对了：</p><ul><li><p>设计的不够好，太脆弱了</p></li><li><p>文档不完整不清晰</p></li><li><p>环境不一样，配置参数...</p></li><li><p>...</p></li></ul><p>今天要写的感悟还不全是这些，重点是，如何把自己的产品用起来，用在客户环境中（或类客户逼真环境）。</p><p>pow 的代码后来终于自己开始用了，然后发现，功能不全啊啊：</p><ul><li><p>模板完全改掉了，我没 get 到 （需求环节 lost 了）</p></li><li><p>周刊中的图表功能没有 （之前没想着用过，看过的周刊上的图表都视而不见了）</p></li></ul><p>但是当天就要用啊，手忙脚乱的改代码，最终还是有个功能没时间做。</p><p>体会就是：</p><ul><li><p>用的越早，越早发现问题啊</p></li><li><p>做好的东西，真正用起来才有成就感和意义</p></li></ul><h2>工作</h2><p>开发的工具要部署到别组的环境中，在本地试了又试，感觉万无一失了。结果看到别人的环境配置和运行命令，发现没想象中的简单。</p><p>和同事讨论过程中，我们惊讶的发现，一个接一个的问题浮出水面，问题套问题，很多还无解。不过好在还是综合有解。</p><p>多数问题，在我们自己本地测试的时候，没有暴露出来，现在想想，还是因为“孤立”的看问题了，没有真正从用户的角度考虑，虽然很老套的说法，但就是这样，“用”起来才能发现真正的问题。</p><p>一个感悟就是，以前找工作的时候，总喜欢说“我善于发现和解决问题”~，现在感觉，解决问题其实很简单，难在发现问题啊啊，更难在发现真正的问题，而要发现真正的问题，还得真正“用”起来。</p><h2><a class="tc-tiddlylink tc-tiddlylink-missing" href="ChangeLog.html">ChangeLog</a></h2><ul><li><p>2019-12-20 init</p></li></ul></div>
+
+
+
+</div>
+
+</p>
+</section>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="generator" content="TiddlyWiki" />
+<meta name="tiddlywiki-version" content="5.1.22" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="mobile-web-app-capable" content="yes"/>
+<meta name="format-detection" content="telephone=no">
+<link id="faviconLink" rel="shortcut icon" href="favicon.ico">
+<link rel="stylesheet" href="static.css">
+<title>life/General-silly-issues: My Struggle — Life goes on...</title>
+</head>
+<body class="tc-body">
+
+<section class="tc-story-river">
+<p><div class="tc-tiddler-frame tc-tiddler-view-frame tc-tiddler-exists " data-tags="" data-tiddler-title="life/General-silly-issues"><div class="tc-tiddler-title"><div class="tc-titlebar"><span class="tc-tiddler-controls"><span class=" tc-reveal"><button aria-label="more" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fmore-tiddler-actions" title="More actions"></button><div class=" tc-reveal" hidden="true"></div></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal"><button aria-label="edit" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fedit" title="Edit this tiddler"></button></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal"><button aria-label="close" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fclose" title="Close this tiddler"></button></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span></span><span><span class="tc-tiddler-title-icon" style="fill:;"></span><h2 class="tc-title">life/General-silly-issues</h2></span></div><div class="tc-tiddler-info tc-popup-handle tc-reveal" hidden="true"></div></div><div class=" tc-reveal" hidden="true"></div>
+<div class=" tc-reveal"><div class="tc-subtitle"><a class="tc-tiddlylink tc-tiddlylink-missing" href=".html"></a>26th July 2020</div></div><div class=" tc-reveal">
+<div class="tc-tags-wrapper"></div>
+</div>
+
+<div class="tc-tiddler-body tc-reveal"><hr><p>title: 记几个很傻的错误和思虑不周<br>date: 2020-01-06<br>edit: 2020-01-06<br>layout: post<br>status: Completed<br>categories:</p><ul><li><p>Python<br>tags:</p></li><li><p>Python<br>description:  连着犯了好几个错误，sigh</p></li></ul><hr><p>先找个客观理由，最近可能因为调整睡眠适应期间，状态不太好，一连串的低级错误，记录下来，以示警醒~</p><ul><li><p>视而不见，不视更不见</p><ul><li><p><code>mvn clean package</code> 的时候总是报错某个 class 找不到，但我单独编译那个 class 没问题啊；</p></li><li><p>我单独编译那个 class，然后 <code>mvn package</code> 也没问题啊</p></li><li><p>问同事，说 <code>pom</code> 你往下拉拉看...然后赫然发现 那个 class 被 exclude 了</p></li><li><p>而我，复制黏贴后，就压根没仔细看后面的得改。</p></li></ul></li><li><p>以最小的 effort 做事</p><ul><li><p>要支持新版本的插件，不假思索的加了新的 profile（于是还导致了前面那个问题）</p></li><li><p>同事说：你试过用现有版本打包过的 jar 在新版本插件环境中跑了吗？</p></li><li><p>我：没。。。</p></li><li><p>其实，我首先该做的便是同事建议的，而不是加新的 profile，因为那样就会新的 efforts</p></li></ul></li><li><p>相对路径，相对的是什么？</p><ul><li><p>由于某种限制，单元测试的数据得挪到模块外面</p></li><li><p>然而，测试框架（第三方的）写死了只认相对路径</p></li><li><p>然后我就脑子卡壳了</p></li><li><p>没有想到，挪出去也还是可以用相对路径的啊，<code>../</code>不也是相对路径吗！</p></li><li><p>思维僵硬~</p></li></ul></li><li><p>XY 问题</p><ul><li><p>接着上面的问题，后来是试了 <code>../</code>，然而，那个框架竟然在遇到 <code>../</code>的时候直接返回 <code>null</code></p></li><li><p>只好放弃，另寻其他路。各种不通</p></li><li><p>求助同事，同事说，咱们的原始问题是什么？</p></li><li><p>回到原始问题，同事建议加个隐藏开关，超赞，完美解决两个问题（其中一个未来一定会遇到的问题）</p></li><li><p>在路不通的时候，一定还是不要忘了回到原点~</p></li></ul></li></ul><ul><li><p>2020-01-06 init</p></li></ul></div>
+
+
+
+</div>
+
+</p>
+</section>
+</body>
+</html>

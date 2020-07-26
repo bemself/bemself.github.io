@@ -1,0 +1,104 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="generator" content="TiddlyWiki" />
+<meta name="tiddlywiki-version" content="5.1.22" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="mobile-web-app-capable" content="yes"/>
+<meta name="format-detection" content="telephone=no">
+<link id="faviconLink" rel="shortcut icon" href="favicon.ico">
+<link rel="stylesheet" href="static.css">
+<title>python/Test-Flask-App: My Struggle — Life goes on...</title>
+</head>
+<body class="tc-body">
+
+<section class="tc-story-river">
+<p><div class="tc-tiddler-frame tc-tiddler-view-frame tc-tiddler-exists " data-tags="" data-tiddler-title="python/Test-Flask-App"><div class="tc-tiddler-title"><div class="tc-titlebar"><span class="tc-tiddler-controls"><span class=" tc-reveal"><button aria-label="more" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fmore-tiddler-actions" title="More actions"></button><div class=" tc-reveal" hidden="true"></div></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal"><button aria-label="edit" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fedit" title="Edit this tiddler"></button></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal"><button aria-label="close" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fclose" title="Close this tiddler"></button></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span></span><span><span class="tc-tiddler-title-icon" style="fill:;"></span><h2 class="tc-title">python/Test-Flask-App</h2></span></div><div class="tc-tiddler-info tc-popup-handle tc-reveal" hidden="true"></div></div><div class=" tc-reveal" hidden="true"></div>
+<div class=" tc-reveal"><div class="tc-subtitle"><a class="tc-tiddlylink tc-tiddlylink-missing" href=".html"></a>26th July 2020</div></div><div class=" tc-reveal">
+<div class="tc-tags-wrapper"></div>
+</div>
+
+<div class="tc-tiddler-body tc-reveal"><hr><p>title:  python 测试之 pytest flask app 初探<br>date:  2020-05-02 21:01:18<br>edit:  2020-05-02 21:01:05<br>layout: post<br>status: Writing<br>categories:</p><ul><li><p>Python<br>tags:</p></li><li><p>Python<br>description:  用 pytest 测试 flask api service</p></li></ul><hr><h1>背景</h1><p>使用 pytest 测试 flask api service</p><h1>框架之选择</h1><p>为什么选 pytest? 并没有特别原因, 只是刚好看到有个 pytest-flask package, 就先试试了, 用起来还好, 就记录一下.</p><p>框架中用到了 fixture, 就是在实际测试的前后加入 setup, teardown 等操作, 是测试必备之选.</p><p>测试的几大要素就不多说了.</p><h1>直接上步骤</h1><p>安装: <code>pip install pytest-flask</code></p><p>目录结构:</p><pre><code>- module1
+    - __init__.py
+    - src
+        - __init__.py
+        - app.py
+        - config.py
+    - test
+        - __init__.py
+        - conftest.py
+        - pytest.ini
+        - test_f1.py
+</code></pre><h2>创建 flask api service</h2><p>参考 <a href="https://flask.palletsprojects.com/en/1.1.x/tutorial/factory/" target="_blank">Application Setup — Flask Documentation (1.1.x)</a></p><ul><li><p>用工厂模式, 在 <strong>init</strong>.py 中创建 create_app 方法</p></li><li><p>在 app.py 中导入: <code>from src.app import create_app</code></p></li></ul><p>src/<strong>init</strong>.py:</p><pre class="py hljs"><code><span class="hljs-keyword">import</span> os
+<span class="hljs-keyword">from</span> flask <span class="hljs-keyword">import</span> Flask
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">create_app</span><span class="hljs-params">(test_config=None)</span>:</span>
+    <span class="hljs-comment"># create and configure the app</span>
+    app = Flask(__name__, instance_relative_config=<span class="hljs-literal">False</span>)
+    app.config.from_mapping(
+        SECRET_KEY=<span class="hljs-string">'dev'</span>,
+        DATABASE=os.path.join(app.instance_path, <span class="hljs-string">'flaskr.sqlite'</span>),
+    )
+
+    <span class="hljs-keyword">if</span> test_config <span class="hljs-keyword">is</span> <span class="hljs-literal">None</span>:
+        <span class="hljs-comment"># load the instance config, if it exists, when not testing</span>
+        app.config.from_pyfile(<span class="hljs-string">'config.py'</span>, silent=<span class="hljs-literal">True</span>)
+    <span class="hljs-keyword">else</span>:
+        <span class="hljs-comment"># load the test config if passed in</span>
+        app.config.from_pyfile(test_config)
+
+    <span class="hljs-comment"># ensure the instance folder exists</span>
+    <span class="hljs-keyword">try</span>:
+        os.makedirs(app.instance_path)
+    <span class="hljs-keyword">except</span> OSError:
+        <span class="hljs-keyword">pass</span>
+
+    <span class="hljs-comment"># a simple page that says hello</span>
+<span class="hljs-meta">    @app.route('/hello')</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">hello</span><span class="hljs-params">()</span>:</span>
+        <span class="hljs-keyword">return</span> <span class="hljs-string">'Hello, World!'</span>
+
+    <span class="hljs-keyword">return</span> app
+
+</code></pre><p>app.py:</p><pre><code>from . import create_app
+app = create_app()
+</code></pre><h2>测试 api service</h2><p>在 conftest.py 中创建 fixture: <code>@pytest.fixture</code></p><pre class="py hljs"><code><span class="hljs-keyword">import</span> os
+<span class="hljs-keyword">import</span> tempfile
+<span class="hljs-keyword">import</span> pytest
+<span class="hljs-keyword">from</span> src.app <span class="hljs-keyword">import</span> create_app
+
+<span class="hljs-meta">@pytest.fixture</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">client</span><span class="hljs-params">()</span>:</span>
+    flask_app = create_app() 
+    <span class="hljs-comment"># Flask provides a way to test your application by exposing the Werkzeug test Client</span>
+    <span class="hljs-comment"># and handling the context locals for you.</span>
+    client = flask_app.test_client()
+    <span class="hljs-comment"># Establish an application context before running the tests.</span>
+    ctx = flask_app.app_context()
+    ctx.push()
+    <span class="hljs-keyword">yield</span> client  <span class="hljs-comment"># this is where the testing happens!</span>
+    ctx.pop()
+</code></pre><p>在 test_f1.py 中:</p><pre class="py hljs"><code><span class="hljs-keyword">import</span> os
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">test_f1</span><span class="hljs-params">(client, capsys)</span>:</span>
+    <span class="hljs-string">'''Test f1
+    '''</span>
+    res = client.get(<span class="hljs-string">'/hello'</span>)
+    captured = capsys.readouterr()
+    <span class="hljs-keyword">assert</span> <span class="hljs-string">'error'</span> <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> captured.err
+    <span class="hljs-keyword">assert</span> <span class="hljs-string">b'Hello, World!'</span> <span class="hljs-keyword">in</span> res.data
+</code></pre><h2>测试范围</h2><p>有些 test 如果想 ignore 怎么办?</p><p>在 conftest.py 中添加:</p><pre class="py hljs"><code>collect_ignore = [
+    <span class="hljs-string">"test_f1.py"</span>
+    ]
+</code></pre><p>当运行 pytest 的时候, &quot;test_f1.py&quot;就不会在 collected 列表中了.</p><p>参考: <a href="https://docs.pytest.org/en/latest/example/pythoncollection.html" target="_blank">Changing standard (Python) test discovery — pytest documentation</a></p><h1>Tutorials</h1><ul><li><p><a href="https://pytest-flask.readthedocs.io/en/latest/" target="_blank">Welcome to pytest-flask’s documentation! — pytest-flask 0.10.0 documentation</a></p></li><li><p><a href="https://realpython.com/python-web-applications-with-flask-part-iii/#the-tests" target="_blank">Python Web Applications With Flask – Part III – Real Python</a></p></li><li><p><a href="https://www.patricksoftwareblog.com/testing-a-flask-application-using-pytest/" target="_blank">Testing a Flask Application using pytest – Patrick's Software Blog</a></p></li><li><p><a href="https://flask.palletsprojects.com/en/1.1.x/testing/" target="_blank">Testing Flask Applications — Flask Documentation (1.1.x)</a></p></li><li><p><a href="https://www.damyanon.net/post/flask-series-testing/" target="_blank">How to Test a Flask Application</a></p></li><li><p><a href="https://docs.pytest.org/en/latest/fixture.html" target="_blank">pytest fixtures: explicit, modular, scalable — pytest documentation</a></p></li></ul><ul><li><p><a href="https://flask.palletsprojects.com/en/1.1.x/quickstart/#redirects-and-errors" target="_blank">Quickstart — Flask Documentation (1.1.x)</a></p></li><li><p><a href="http://flask.pocoo.org/docs/api/#flask.url_for" target="_blank">the Flask API document for flask.url_for()</a></p></li></ul><h1><a class="tc-tiddlylink tc-tiddlylink-missing" href="ChangLog.html">ChangLog</a></h1><ul><li><p>2020-05-03 init</p></li></ul></div>
+
+
+
+</div>
+
+</p>
+</section>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="generator" content="TiddlyWiki" />
+<meta name="tiddlywiki-version" content="5.1.22" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="mobile-web-app-capable" content="yes"/>
+<meta name="format-detection" content="telephone=no">
+<link id="faviconLink" rel="shortcut icon" href="favicon.ico">
+<link rel="stylesheet" href="static.css">
+<title>python/run-jupyter-notebook-from-vscode: My Struggle — Life goes on...</title>
+</head>
+<body class="tc-body">
+
+<section class="tc-story-river">
+<p><div class="tc-tiddler-frame tc-tiddler-view-frame tc-tiddler-exists " data-tags="" data-tiddler-title="python/run-jupyter-notebook-from-vscode"><div class="tc-tiddler-title"><div class="tc-titlebar"><span class="tc-tiddler-controls"><span class=" tc-reveal"><button aria-label="more" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fmore-tiddler-actions" title="More actions"></button><div class=" tc-reveal" hidden="true"></div></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal"><button aria-label="edit" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fedit" title="Edit this tiddler"></button></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal"><button aria-label="close" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fclose" title="Close this tiddler"></button></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span></span><span><span class="tc-tiddler-title-icon" style="fill:;"></span><h2 class="tc-title">python/run-jupyter-notebook-from-vscode</h2></span></div><div class="tc-tiddler-info tc-popup-handle tc-reveal" hidden="true"></div></div><div class=" tc-reveal" hidden="true"></div>
+<div class=" tc-reveal"><div class="tc-subtitle"><a class="tc-tiddlylink tc-tiddlylink-missing" href=".html"></a>26th July 2020</div></div><div class=" tc-reveal">
+<div class="tc-tags-wrapper"></div>
+</div>
+
+<div class="tc-tiddler-body tc-reveal"><hr><p>title: Python - 在 VSCode 中配置和运行 Jupyter Notebook<br>date: 2020-01-30<br>edit: 2020-01-30<br>layout: post<br>status: Completed<br>categories:</p><ul><li><p>Python<br>tags:</p></li><li><p>Python<br>description: 一直不愿意多使用 Jupyter，因为它是在浏览器中操作。看到 VSCode 支持 Jupyter 后，立即配置使用，现在可方便多了，不需要在 VSCode 和 浏览器之间切换了</p></li></ul><hr><h1>背景</h1><p>Jupyter Notebook 很好用，但是要在浏览器中用，个人很不喜欢在浏览器上操作。平常编辑和跑 python 代码都是在 vscode 中，用的挺爽的。</p><p>喜闻 VSCode 支持 Jupyter Notebook 了，便立即安装了。只是过程中遇到点问题，所以记录一下。</p><h1>在 vscode 中安装配置 jupyter</h1><p>参考：<a href="https://code.visualstudio.com/docs/python/jupyter-support" target="_blank">Working with Jupyter Notebooks in Visual Studio Code</a></p><p>我是直接在 Vscode Extensions 里面找到 &quot;Jupyter&quot; 安装的。</p><p><code>command + shift + P</code> 选择 <code>新建 jupyter notebook</code> 即可。</p><p>建好后，直接像在浏览器中操作一样，运行修改。</p><h1>遇到的问题</h1><ul><li><p><code>Error: Activating Python 3.7.0 64-bit ('general': venv) to run Jupyter failed with Error: StdErr from ShellExec, pyenv: activate: command not found</code></p></li></ul><p>我是在 <code>pyenv</code> 环境中运行 cell 的时候遇到此问题，参考<br><a href="https://github.com/microsoft/vscode-python/issues/4013" target="_blank">pyenv + virtualenv not working - use pyenv activate for all · Issue #4013 · microsoft/vscode-python</a>提示的解决方案，成功解决：</p><p>在 vscode settings 文件中的 <code>settings</code> 部分 加入： <code>&quot;python.terminal.activateEnvironment&quot;: false</code>，无需重启 vscode 即可。</p><ul><li><p><code>Error: Jupyter cannot be started. Error attempting to locate jupyter: Error: Module 'notebook' not installed.</code></p></li></ul><p>vscode 用这命令来找 notebook: <code>python -m jupyter notebook --version</code></p><p>在我的 <code>pyenv</code> 环境中： <code>pip install notebook</code></p><h2><a class="tc-tiddlylink tc-tiddlylink-missing" href="ChangeLog.html">ChangeLog</a></h2><ul><li><p>2020-01-30 init</p></li></ul></div>
+
+
+
+</div>
+
+</p>
+</section>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="generator" content="TiddlyWiki" />
+<meta name="tiddlywiki-version" content="5.1.22" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="mobile-web-app-capable" content="yes"/>
+<meta name="format-detection" content="telephone=no">
+<link id="faviconLink" rel="shortcut icon" href="favicon.ico">
+<link rel="stylesheet" href="static.css">
+<title>python/Tuple-usage: My Struggle — Life goes on...</title>
+</head>
+<body class="tc-body">
+
+<section class="tc-story-river">
+<p><div class="tc-tiddler-frame tc-tiddler-view-frame tc-tiddler-exists " data-tags="" data-tiddler-title="python/Tuple-usage"><div class="tc-tiddler-title"><div class="tc-titlebar"><span class="tc-tiddler-controls"><span class=" tc-reveal"><button aria-label="more" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fmore-tiddler-actions" title="More actions"></button><div class=" tc-reveal" hidden="true"></div></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal"><button aria-label="edit" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fedit" title="Edit this tiddler"></button></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal"><button aria-label="close" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fclose" title="Close this tiddler"></button></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span></span><span><span class="tc-tiddler-title-icon" style="fill:;"></span><h2 class="tc-title">python/Tuple-usage</h2></span></div><div class="tc-tiddler-info tc-popup-handle tc-reveal" hidden="true"></div></div><div class=" tc-reveal" hidden="true"></div>
+<div class=" tc-reveal"><div class="tc-subtitle"><a class="tc-tiddlylink tc-tiddlylink-missing" href=".html"></a>26th July 2020</div></div><div class=" tc-reveal">
+<div class="tc-tags-wrapper"></div>
+</div>
+
+<div class="tc-tiddler-body tc-reveal"><hr><p>title: Python - Tuple 在 python 中的几处应用<br>date: 2019-12-25<br>edit: 2019-12-25<br>layout: post<br>status: Writing<br>categories:</p><ul><li><p>Python<br>tags:</p></li><li><p>Python<br>description:  Python tuple 的几个有意思的地方，持续增补</p></li></ul><hr><h1>背景</h1><p>最近了解了 <code>tuple</code> 的设计由来，写了<a href="https://bemself.github.io/python/Python-Tuple.html" target="_blank">Tuple 怎么用，为什么有 tuple 这种设计？</a>，便留意起来 <code>tuple</code> 的一些具体应用，观察到了已经没有留意到的点，记录一下，持续增补。</p><h2>for loop</h2><p>经常用，但从未想过为什么可以这么写，<code>for _name, _value in _dict.items():</code>, <code>_name, _value</code> 可以这么逗号分隔直接罗列。</p><pre><code>&gt;&gt;&gt; _dict = {&quot;name1&quot;: &quot;test1&quot;, &quot;name2&quot;: &quot;test2&quot;}
+&gt;&gt;&gt; for _name, _value in _dict.items():
+...   print(type(_dict.items()))
+...   print(_name, _value)
+... 
+&lt;class 'dict_items'&gt;
+name1 test1
+&lt;class 'dict_items'&gt;
+name2 test2
+</code></pre><p>打印一下 <code>_dict.items()</code> 的类型，返回的是 <code>dict_item</code> 类，这是一个 <code>set-like</code> 对象</p><blockquote><p>def items()<br>D.items() -&gt; a set-like object providing a view on D's items</p></blockquote><p>所以也可以这么写：</p><pre><code>&gt;&gt;&gt; for _item in _dict.items():
+...   print(_item)
+...   _name, _value = _item
+... 
+('name1', 'test1')
+('name2', 'test2')
+</code></pre><p>可见，<code>_name, _value = _item</code> 便是 <code>for _name, _value in _dict</code> 由来了。</p><h2>sort</h2><p>tuple 和 list 按官方说法，是很相似的数据类型，不过用处不一样。</p><p>list 有个 sort() 方法，可以原地排序列表，想当然的以为 tuple 也可以，实际其实不可以，因为我忘记了 tuple 一旦定义了，是不可改变的元组，自然不能原地排序了。</p><p>不过依然可以用 sorted() 方法。</p><h2>单元素 tuple 为啥后面有个逗号</h2><p>官方这么说的：</p><blockquote><p>Using a trailing comma for a singleton tuple: a, or (a,)</p></blockquote><p>为啥要加个逗号，而不直接写成 <code>(&quot;a&quot;)</code>，这似乎才符合常规。</p><p>在 REPL 里面试过如下，原来 <code>(&quot;a&quot;)</code> 返回的是一个字符 <code>'a'</code>, 这就有点意思了，为啥要这么设计呢？不懂。</p><pre><code>&gt;&gt;&gt; &quot;a&quot;,
+('a',)
+&gt;&gt;&gt; (&quot;a&quot;,)
+('a',)
+&gt;&gt;&gt; (&quot;a&quot;)
+'a'
+</code></pre><h2><a href="https://realpython.com/python-zip-function/" target="_blank">zip</a></h2><h2>参考</h2><ul><li><p>[tuple](<a href="https://docs.python.org/3/library/stdtypes.html?highlight=tuple#tuple" target="_blank">Using a trailing comma for a singleton tuple: a, or (a,)</a>)</p></li></ul><h2><a class="tc-tiddlylink tc-tiddlylink-missing" href="ChangeLog.html">ChangeLog</a></h2><ul><li><p>2019-12-25 init</p></li></ul></div>
+
+
+
+</div>
+
+</p>
+</section>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="generator" content="TiddlyWiki" />
+<meta name="tiddlywiki-version" content="5.1.22" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="mobile-web-app-capable" content="yes"/>
+<meta name="format-detection" content="telephone=no">
+<link id="faviconLink" rel="shortcut icon" href="favicon.ico">
+<link rel="stylesheet" href="static.css">
+<title>git/Remove-Files-From-History: My Struggle — Life goes on...</title>
+</head>
+<body class="tc-body">
+
+<section class="tc-story-river">
+<p><div class="tc-tiddler-frame tc-tiddler-view-frame tc-tiddler-exists " data-tags="" data-tiddler-title="git/Remove-Files-From-History"><div class="tc-tiddler-title"><div class="tc-titlebar"><span class="tc-tiddler-controls"><span class=" tc-reveal"><button aria-label="more" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fmore-tiddler-actions" title="More actions"></button><div class=" tc-reveal" hidden="true"></div></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal"><button aria-label="edit" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fedit" title="Edit this tiddler"></button></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal"><button aria-label="close" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fclose" title="Close this tiddler"></button></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span></span><span><span class="tc-tiddler-title-icon" style="fill:;"></span><h2 class="tc-title">git/Remove-Files-From-History</h2></span></div><div class="tc-tiddler-info tc-popup-handle tc-reveal" hidden="true"></div></div><div class=" tc-reveal" hidden="true"></div>
+<div class=" tc-reveal"><div class="tc-subtitle"><a class="tc-tiddlylink tc-tiddlylink-missing" href=".html"></a>26th July 2020</div></div><div class=" tc-reveal">
+<div class="tc-tags-wrapper"></div>
+</div>
+
+<div class="tc-tiddler-body tc-reveal"><hr><p>title: Git - 从历史中真正删除文件<br>date: 2020-01-10<br>edit: 2020-01-10<br>layout: post<br>status: Completed<br>categories:</p><ul><li><p>Git<br>tags:</p></li><li><p>Git<br>description:   也算是历史遗留问题了，今天终于似乎搞定了，记录一下~</p></li></ul><hr><h1>背景</h1><p>Git 操作时，经常“不小心”上传一些不必要的（大）文件，或者私密数据，等等。</p><p>当然可以从本地把这些文件删除，加入 <code>.gitignore</code>, 避免下次再上传。</p><p>然而，之前已经上传过的，还遗留在 git 历史中，“有心人”还是会能挖掘到你的私密数据。。。</p><h1>分析</h1><p><a href="https://git-scm.com/docs/git-filter-branch" target="_blank">Git - git-filter-branch</a> 可以从历史中删除文件，但据说“挺危险的”，于是前车之鉴我也没敢试试。</p><p>从大妈那儿拿到建议用 <a href="https://rtyley.github.io/bfg-repo-cleaner/#download" target="_blank">BFG Repo-Cleaner by rtyley</a>，值得一试，这个大概是终极工具了。</p><h1>BFG 删除历史文件</h1><p>网站的帮助还算清楚，直接上操作：</p><ul><li><p>环境：Java8+</p></li><li><p><code>git clone --mirror your-repo.git</code></p></li><li><p><code>cd your-repo.git</code></p></li><li><p><a href="http://repo1.maven.org/maven2/com/madgag/bfg/1.12.16/bfg-1.12.16.jar" target="_blank">下载bfg.jar</a>，我为了省事，直接将其复制到 <code>your-repo.git</code> 目录下了（不建议参考哈）</p></li><li><p><code>java -jar bfg-1.12.16.jar --delete-files test1.py</code></p></li></ul><p>如果是要删文件夹：</p><p><code>--delete-folders &quot;{folderA,folderB,folderC}&quot;</code> 这个就好了</p><ul><li><p><code>git reflog expire --expire=now --all &amp;&amp; git gc --prune=now --aggressive</code></p></li><li><p><code>git push</code></p></li></ul><p>再去看历史，那个文件<code>test1.py</code>不见了~done.</p><ul><li><p>最好把本地旧的 repo 删除了，不然可能又不小心 mess up 了</p></li><li><p>通知其他仓库使用者重新 clone 吧，他们本地的旧的也好删除了。</p></li></ul><blockquote><p>清理后,<br>全新 clone , 检验,<br>然后, 增补 gitnigore 配置, 防止再次...<br>如果有必要, 可以将数据目录移到工程目录之外,<br>增补 ENV 声明来指向</p></blockquote><p>要注意的是：</p><ul><li><p>BFG 默认不会 touch最新的commit，即如果你要删除的文件在最新的 commit 中，则不会删除之。为什么？因为最新的 commit 很可能是已上线在 production 的，所以~</p></li><li><p>BFG 用的是仓库镜像，具体是什么，见下文。</p></li><li><p>如果要删除的文件在受保护的<code>commit</code>中，BFG 不会删，不建议删。至于<code>commit</code>什么情况下会受保护，我还不太清楚。</p></li></ul><h1>Git 仓库镜像</h1><p>值得注意的是，BFG 用的是仓库镜像 <code>git clone --mirror</code> ， 它和普通的<code>git clone</code>有什么区别？</p><p><a href="https://git-scm.com/docs/git-clone#git-clone---mirror" target="_blank">git-clone doc</a>:</p><blockquote><p><code>--mirror</code></p></blockquote><pre>Set up a mirror of the source repository. This implies --bare. Compared to --bare, --mirror not only maps local branches of the source to local branches of the target, it maps all refs (including remote-tracking branches, notes etc.) and sets up a refspec configuration such that all these refs are overwritten by a git remote update in the target repository.
+</pre><p>我没看懂，对“refs&quot;还是挺迷惑，模糊感觉， <code>--mirror</code> 类似深拷贝, 复制一切~， 具体理解还得和另外两种 <code>git clone</code>的方式结合起来：</p><ul><li><p><code>git clone your-repo.git</code></p></li><li><p><code>git clone --bare your-repo.git</code>: 这个貌似最浅层次的 copy 了(bare嘛)</p></li></ul><p><a href="https://stackoverflow.com/questions/3959924/whats-the-difference-between-git-clone-mirror-and-git-clone-bare" target="_blank">What's the difference between git clone --mirror and git clone --bare - Stack Overflow</a> 这里面有详细的讲解, 摘一段如下：</p><blockquote><p>git clone --mirror origin-url: Every last one of those refs will be copied as-is. You'll get all the tags, local branches master (HEAD), next, pu, and maint, remote branches devA/master and devB/master, other refs refs/foo/bar and refs/foo/baz. Everything is exactly as it was in the cloned remote. Remote tracking is set up so that if you run git remote update all refs will be overwritten from origin, as if you'd just deleted the mirror and recloned it. As the docs originally said, it's a mirror. It's supposed to be a functionally identical copy, interchangeable with the original.</p></blockquote><h1>BFG 的原理</h1><p>可能也是因为 <code>--mirror</code> 是深拷贝，复制一切，所以也便于更新修改了~</p><p>本来以为 BFG 也用了 <code>git-filter-branch</code>，查了一下源码，没找到类似的 git 命令，看到的是这样：</p><pre><code>clean(commits)
+updateRefsWithCleanedIds()
+objectIdCleaner.stats()
+objectIdCleaner.cleanedObjectMap()
+</code></pre><p>后来去官网再仔细看，发现有一段和<code>git-filter-branch</code>的性能比较：</p><ul><li><p><code>git-filter-branch</code> 循环每一个 commit， 在每个 commit 中 walk 整个文件目录结构，慢而且浪费</p></li><li><p>BFG：用 git 下面这个特性，只具体处理要删除的文件或文件夹</p><blockquote><p>every file and folder is represented precisely once (and given a unique SHA-1 hash-id)</p></blockquote><p>不知道是否可以这么理解，用过 <code>git log --oneline &lt;文件名&gt;</code> 都知道，这个命令会显示文件的各个 commit 历史。BFG 大概用的这种每个文件在每次 commit 中都有一个 <code>sha</code>，找到这个文件所有的 <code>commit sha</code>, 然后再分别处理之似乎就可以了，不必考虑 commit 的文件目录循环了。</p></li></ul><h1>问题</h1><p>我现在用的还不多，等遇到了继续补充。</p><h2>问题 1： 还是有文件没删除，在某些 commits 中依然能看到</h2><p>这个问题有两方面：</p><ul><li><p>经大妈指正，我混淆了 commit 本身数据 和 版本中的文件数据</p></li></ul><p>我查看的是<code>https://gitlab.com/&lt;repo&gt;/commit/187e9d07</code>。</p><p>而实际应是 <code>https://gitlab.com/&lt;repo&gt;/tree/187e9d07/...</code>, 这里才是对应版本树的文件。</p><ul><li><p>有些删除在运行 <code>bfg</code> 命令后，我没有及时做 <code>git reflog expire --expire=now --all &amp;&amp; git gc --prune=now --aggressive</code></p></li></ul><p>这就等于在数据库中插入数据后没有做 commit 一样，如大妈所言：</p><blockquote><p>对 git 仓库进行调整后~<br>得刷入数据才生效啊~<br>将git 视为数据库的话~</p></blockquote><h2>问题 2： BFG 之前忘了先清理仓库，删除想删的文件了</h2><p>这个就有点傻了，我忘记了先把仓库里面想删的文件先物理上删除，结果先跑了 BFG~ 导致后面又跑了几遍~</p><h1>附录</h1><p>想贴出来这个，就因为挺好笑的~自己找, BFG repo 好多 commits message 也是 Trump~</p><pre><code>Using repo : your-repo.git
+
+Found 16 objects to protect
+Found 26 commit-pointing refs : HEAD, refs/heads/test1, refs/heads/test2, ...
+
+Protected commits
+-----------------
+
+These are your protected commits, and so their contents will NOT be altered:
+
+ * commit 260b0811 (protected by 'HEAD')
+
+Cleaning
+--------
+
+Found 81 commits
+Cleaning commits:       100% (81/81)
+Cleaning commits completed in 430 ms.
+
+Updating 1 Ref
+--------------
+
+        Ref                    Before     After   
+        ------------------------------------------
+        refs/heads/test1 | 3db4545b | 87b66f4b
+
+Updating references:    100% (1/1)
+...Ref update completed in 46 ms.
+
+Commit Tree-Dirt History
+------------------------
+
+        Earliest                                              Latest
+        |                                                          |
+        ..........................................................DD
+
+        D = dirty commits (file tree fixed)
+        m = modified commits (commit message or parents changed)
+        . = clean commits (no changes to file tree)
+
+                                Before     After   
+        -------------------------------------------
+        First modified commit | 707a5be5 | 37820e97
+        Last dirty commit     | 3db4545b | 87b66f4b
+
+Deleted files
+-------------
+
+        Filename   Git id                          
+        -------------------------------------------
+        test1.py | 37677ac6 (28 B), d1758471 (20 B)
+
+
+In total, 6 object ids were changed. Full details are logged here:
+
+        your-repo.git.bfg-report/2020-01-10/21-41-09
+
+BFG run is complete! When ready, run: git reflog expire --expire=now --all &amp;&amp; git gc --prune=now --aggressive
+
+
+--
+You can rewrite history in Git - don't let Trump do it for real!
+Trump's administration has lied consistently, to make people give up on ever
+being told the truth. Don't give up: https://www.theguardian.com/us-news/trump-administration
+--
+</code></pre><h1>Reference</h1><ul><li><p><a href="https://rtyley.github.io/bfg-repo-cleaner/#download" target="_blank">BFG Repo-Cleaner by rtyley</a></p></li><li><p><a href="https://gitlab.com/help/user/project/repository/reducing_the_repo_size_using_git.md" target="_blank">Reducing the repo size using git · Repository · Project · User · Help · <a class="tc-tiddlylink tc-tiddlylink-missing" href="GitLab.html">GitLab</a></a></p></li></ul><h1>Changelog</h1><ul><li><p>2020-01-11 增补问题</p></li><li><p>2020-01-10 init</p></li></ul></div>
+
+
+
+</div>
+
+</p>
+</section>
+</body>
+</html>

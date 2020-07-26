@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="generator" content="TiddlyWiki" />
+<meta name="tiddlywiki-version" content="5.1.22" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="mobile-web-app-capable" content="yes"/>
+<meta name="format-detection" content="telephone=no">
+<link id="faviconLink" rel="shortcut icon" href="favicon.ico">
+<link rel="stylesheet" href="static.css">
+<title>git/Common-Issues: My Struggle — Life goes on...</title>
+</head>
+<body class="tc-body">
+
+<section class="tc-story-river">
+<p><div class="tc-tiddler-frame tc-tiddler-view-frame tc-tiddler-exists " data-tags="" data-tiddler-title="git/Common-Issues"><div class="tc-tiddler-title"><div class="tc-titlebar"><span class="tc-tiddler-controls"><span class=" tc-reveal"><button aria-label="more" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fmore-tiddler-actions" title="More actions"></button><div class=" tc-reveal" hidden="true"></div></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal"><button aria-label="edit" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fedit" title="Edit this tiddler"></button></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal"><button aria-label="close" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fclose" title="Close this tiddler"></button></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span></span><span><span class="tc-tiddler-title-icon" style="fill:;"></span><h2 class="tc-title">git/Common-Issues</h2></span></div><div class="tc-tiddler-info tc-popup-handle tc-reveal" hidden="true"></div></div><div class=" tc-reveal" hidden="true"></div>
+<div class=" tc-reveal"><div class="tc-subtitle"><a class="tc-tiddlylink tc-tiddlylink-missing" href=".html"></a>26th July 2020</div></div><div class=" tc-reveal">
+<div class="tc-tags-wrapper"></div>
+</div>
+
+<div class="tc-tiddler-body tc-reveal"><hr><p>title: Git - Git 操作问题罗列<br>date: 2019-12-14<br>edit: 2020-01-17<br>layout: post<br>status: Writing<br>categories:</p><ul><li><p>Git<br>tags:</p></li><li><p>Git<br>description: 持续记录 Git 使用中遇到的各种问题，待后续重拾记忆~</p></li></ul><hr><h1>Git 操作问题多多</h1><p>很多问题，如果不记下来，下次还会遇到，得重头再来，故写此文，持续记录~ 到哪天 Git 过时不用了，其实可能是我不用了~</p><h2>问题</h2><h2>enable two-factor auth后，使用普通密码无法 push</h2><p><code>Authentication failed for 'https://github.com/bemself/zh.javascript.info.git/'</code></p><p>这时候之前的密码无效了，得用 token。去 Github-&gt;Settings-&gt;Devloper Settings-&gt;Generate Token，然后用这个 token 即可。</p><h2>git check 其他分支提示 untracked working tree files would be overwritten</h2><p>本地的文件有修改，但还没有 indexed, 用 <code>git checkout</code> 不灵：</p><pre><code>&gt; git checkout &lt;another_branch_name&gt;
+error: The following untracked working tree files would be overwritten by checkout:
+        1-js/03-code-quality/01-debugging-chrome/largeIcons.svg
+Please move or remove them before you switch branches.
+</code></pre><p>如果你不想保留这些文件，那就加 <code>-f</code> 参数：</p><pre><code>git checkout -f &lt;another_branch_name&gt; 
+</code></pre><p>同样，在 <code>git merge</code>的时候也遇到过这个错误，但<code>git merge</code>没有 <code>-f</code>参数，所以只能先 track 文件再 merge 了，像这样：</p><pre><code>git add * 
+git stash
+git stash drop        // 如果不想保留这个 stash
+</code></pre><p>在 <a href="https://stackoverflow.com/questions/17404316/the-following-untracked-working-tree-files-would-be-overwritten-by-merge-but-i" target="_blank">这个答案</a>中提到还有一种情况，上述解决方法就不灵了，</p><blockquote><p>This doesn't work if the files are from submodules that were removed and then readded as normal files</p></blockquote><p>那样的话，就要用到这个命令：(我没有实操过这个，仅做记录待验)</p><pre><code>git fetch --all
+git reset --hard origin/{{your branch name}}
+</code></pre><h2>git merge conflict, using ours or theirs</h2><pre><code>CONFLICT (content): Merge conflict in article.md
+matic merge failed; fix conflicts and then commit the result.
+</code></pre><p>解决方法：</p><pre><code>git checkout --ours article.md
+or
+git checkout --theirs article.md
+</code></pre><h2>unable to delete 'remote_branch': remote ref does not exist</h2><p>我的某个 PR merge 之后， 页面提示我说你的 这个 PR 的分支可以安全删除了，我就愉快的删除了。</p><p>结果我到本地 <code>git brach -a</code> 发现还在呀：</p><pre><code>remotes/origin/pr-branch
+</code></pre><p>那就再删一遍吧：</p><pre><code>git pu origin --delete pr-branch
+</code></pre><p>但是报错了，<code>error: unable to delete 'pr-branch': remote ref does not exist</code></p><p>原因自然是远程那个分支已经被删除了，那现在我<code>git br -a</code>看到的其实是我本地保存的 远程分支，只要把这个删除就好了</p><p>那怎么删？</p><p>首先想到用 <code>git branch -d remotes/origin/pr-branch</code> 来删，结果说<code>error: branch remotes/origin/pr-branch 不存在</code>，但如果我 <code>cat .git/refs/remotes/origin/pr-branch</code> 是没问题的，那是咋回事？没有想通，想是 git 哪个环节失灵了。</p><p>好在还有其他办法，在<a href="GIT-remove-branch.html" target="_blank">git remove branch</a> 一文中提到过，分支就是个指针，在系统中以文件形式存在着，所以找到 <code>.git/refs/remotes/origin</code>下面的以分支命名的文件，删掉即可: <code>rm -f .git/refs/remotes/origin/pr-branch</code></p><h2><a class="tc-tiddlylink tc-tiddlylink-missing" href="ChangeLog.html">ChangeLog</a></h2><ul><li><p>2019-12-20 update</p></li><li><p>2019-12-14 init</p></li></ul></div>
+
+
+
+</div>
+
+</p>
+</section>
+</body>
+</html>

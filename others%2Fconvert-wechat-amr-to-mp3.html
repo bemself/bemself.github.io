@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="generator" content="TiddlyWiki" />
+<meta name="tiddlywiki-version" content="5.1.22" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="mobile-web-app-capable" content="yes"/>
+<meta name="format-detection" content="telephone=no">
+<link id="faviconLink" rel="shortcut icon" href="favicon.ico">
+<link rel="stylesheet" href="static.css">
+<title>others/convert-wechat-amr-to-mp3: My Struggle — Life goes on...</title>
+</head>
+<body class="tc-body">
+
+<section class="tc-story-river">
+<p><div class="tc-tiddler-frame tc-tiddler-view-frame tc-tiddler-exists " data-tags="" data-tiddler-title="others/convert-wechat-amr-to-mp3"><div class="tc-tiddler-title"><div class="tc-titlebar"><span class="tc-tiddler-controls"><span class=" tc-reveal"><button aria-label="more" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fmore-tiddler-actions" title="More actions"></button><div class=" tc-reveal" hidden="true"></div></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal"><button aria-label="edit" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fedit" title="Edit this tiddler"></button></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal"><button aria-label="close" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fclose" title="Close this tiddler"></button></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span></span><span><span class="tc-tiddler-title-icon" style="fill:;"></span><h2 class="tc-title">others/convert-wechat-amr-to-mp3</h2></span></div><div class="tc-tiddler-info tc-popup-handle tc-reveal" hidden="true"></div></div><div class=" tc-reveal" hidden="true"></div>
+<div class=" tc-reveal"><div class="tc-subtitle"><a class="tc-tiddlylink tc-tiddlylink-missing" href=".html"></a>26th July 2020</div></div><div class=" tc-reveal">
+<div class="tc-tags-wrapper"></div>
+</div>
+
+<div class="tc-tiddler-body tc-reveal"><hr><p>title: Wechat - 批量导出微信语音文件 转成mp3<br>edit: 2017-11-18<br>layout: post<br>categories:</p><ul><li><p>Python<br>tags:</p></li><li><p>Python<br>description: 微信属于比较封闭的环境，语音多了会影响内存，而且在微信中听语音不方便，不能快进慢退等。本节介绍了如何批量导出微信语音文件，并转成一个mp3文件。</p></li></ul><hr><h1>批量导出微信语音文件 转成mp3</h1><h2>需求</h2><p>手机内存不够，近期的微信语音太多，而且需要反复听，所以需要导出到电脑并转成mp3格式</p><h2>导出微信语音文件到电脑</h2><p>android手机上，微信的语音文件存放位置在：</p><pre><code>...\tencent\weixin\micromsg\&lt;一个很长的文件名&gt;\voice2
+</code></pre><p>将voice2 folder复制到本地电脑，由于amr文件分散在各个子目录里，故写了一段python脚本，将所有amr文件提取出来，放到一个文件夹中，并按年份和月份进行分组</p><pre><code>import os, shutil, datetime
+&quot;&quot;&quot;
+copy wechat .amr files and group by year and month
+&quot;&quot;&quot;
+
+def copy_files(src, target, filetype=None):
+    id = 1
+    for dirname, subdirlist, filelist in os.walk(src):
+        for fname in filelist:
+            if filetype:
+                if filetype in fname:
+                    mtime = os.stat(os.path.join(dirname, fname)).st_mtime
+                    dtime = datetime.datetime.fromtimestamp(mtime)
+                    month = str(dtime.month)
+                    year = str(dtime.year)
+                    if not os.path.exists(os.path.join(target, year, month)):
+                        os.makedirs(os.path.join(target, year, month))
+                    newtime = str(dtime).replace(&quot;:&quot;, &quot;-&quot;)
+                    newfilename = newtime + &quot;_&quot; + str(id) + &quot;_&quot; + fname
+                    print(&quot;src----&quot;, os.path.join(dirname, fname))
+                    print(&quot;target---&quot;, os.path.join(os.path.join(target, year, month), newfilename))
+                    shutil.copy(os.path.join(dirname, fname), os.path.join(os.path.join(target, year, month), newfilename))
+                    id += 1
+
+src = r&quot;c:\temp\voice2&quot;
+target = r&quot;c:\temp\amrfiles_20171118_by_month&quot;
+if not os.path.exists(target):
+    os.mkdir(target)
+copy_files(src, target, '.amr')
+</code></pre><h2>将amr文件转成mp3</h2><p>试了ffmpeg, 狸窝，都报错，说amr数据不对。</p><p>后来终于通过知乎搜索找到了silk2mp3, 顺利转成功。</p><p>https://kn007.net/topics/batch-convert-silk-v3-audio-files-to-mp3-in-windows/</p><p>不足的一点是不能直接选择一个folder添加所有文件。</p><h2>将所有零散的mp3文件合并成一个mp3文件</h2><p>安装winrar, 选中所有文件后，右键选择“压缩为”，</p><p>在弹出的“压缩文件名和参数”对话框中，</p><ul><li><p>压缩方式：存储</p></li><li><p>压缩文件名：将.rar换成“.mp3&quot;</p><p>压缩后即可。</p></li></ul></div>
+
+
+
+</div>
+
+</p>
+</section>
+</body>
+</html>
