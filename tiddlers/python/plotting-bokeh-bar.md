@@ -1,13 +1,6 @@
 ---
 title: Python 绘图 - Bokeh 堆叠柱状图(stacked bar)
 date: 2020-03-07
-edit: 2020-03-07
-layout: post
-status: Completed
-categories:
-  - Python
-tags:
-  - Python
 description:  在 [Bokeh 初探](https://bemself.github.io/python/Python-plotting-bokeh.html)之后，学习使用它来做个堆叠柱状图
 
 ---

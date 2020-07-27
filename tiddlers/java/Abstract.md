@@ -1,13 +1,6 @@
 ---
 title: 抽象，抽象，抽象
 date: 2019-12-28
-edit: 2019-12-28
-layout: post
-status: Completed
-categories:
-  - 心路
-tags:
-  - 心路
 description:  遭遇性能问题，经同事一点拨，发现问题不仅在于我不会调优（其实是缺乏常识），更是欠缺抽象能力。
 ---
 

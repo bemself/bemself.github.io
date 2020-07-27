@@ -1,13 +1,6 @@
 ---
 title: Python - 在 VSCode 中配置和运行 Jupyter Notebook
 date: 2020-01-30
-edit: 2020-01-30
-layout: post
-status: Completed
-categories:
-  - Python
-tags:
-  - Python
 description: 一直不愿意多使用 Jupyter，因为它是在浏览器中操作。看到 VSCode 支持 Jupyter 后，立即配置使用，现在可方便多了，不需要在 VSCode 和 浏览器之间切换了
 ---
 

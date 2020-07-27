@@ -1,13 +1,6 @@
 ---
 title: Algorithm in Python - 插入排序算法和选择排序算法比较
 edit: 2017-09-30
-layout: post
-categories:
-  - Python
-  - 算法
-tags:
-  - Python
-  - 算法
 description: 《算法4》，用 Python 实现算法, 比较插入排序算法和选择排序算法。看过一些教材，普遍说插入排序算法比选择排序要快，实际上从上面的分析可以看出，其实二者的复杂度差不多，都是O(N平方)。后面的代码实现测试中也证实了这一点。
 ---
 

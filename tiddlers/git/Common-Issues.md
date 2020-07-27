@@ -1,13 +1,6 @@
 ---
 title: Git - Git 操作问题罗列
 date: 2019-12-14
-edit: 2020-01-17
-layout: post
-status: Writing
-categories:
-  - Git
-tags:
-  - Git
 description: 持续记录 Git 使用中遇到的各种问题，待后续重拾记忆~
 ---
 

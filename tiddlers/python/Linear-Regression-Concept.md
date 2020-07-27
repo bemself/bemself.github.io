@@ -1,13 +1,6 @@
 ---
 title: Python 线性回归（Linear Regression) - 到底什么是 regression？
 date: 2020-01-03
-edit: 2020-01-03
-layout: post
-status: Completed
-categories:
-  - Python
-tags:
-  - Python
 description:  了解线性回归前，先看看 Regression 的由来
 ---
 

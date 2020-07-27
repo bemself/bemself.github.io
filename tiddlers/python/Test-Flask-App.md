@@ -1,13 +1,6 @@
 ---
 title:  python 测试之 pytest flask app 初探
-date:  2020-05-02 21:01:18
-edit:  2020-05-02 21:01:05
-layout: post
-status: Writing
-categories:
-  - Python
-tags:
-  - Python
+date:  2020-05-02
 description:  用 pytest 测试 flask api service
 ---
 

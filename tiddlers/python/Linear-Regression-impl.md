@@ -1,13 +1,6 @@
 ---
 title: Python - 线性回归（Linear Regression) 的 Python 实现
 date: 2020-01-14
-edit: 2020-01-14
-layout: post
-status: Completed
-categories:
-  - Python
-tags:
-  - Python
 description:  在 Python 中如何实现线性回归？很简单，有不错的包和函数~
 ---
 

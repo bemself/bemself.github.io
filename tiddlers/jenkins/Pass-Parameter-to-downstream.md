@@ -1,13 +1,3 @@
----
-title: Jenkins - pass parameters to downstream
-edit: 2018-08-10
-layout: post
-categories:
-- Python
-tags:
-- Python
-description: Jenkins持续集成。After Jenkins is upgraded from 1.0 to 2.0, our master job stops to pass parameter values to its downstream jobs. Here is to solve this problem
----
 
 # Background
 

@@ -1,11 +1,6 @@
 ---
 title: Wechat - 批量导出微信语音文件 转成mp3
 edit: 2017-11-18
-layout: post
-categories:
-- Python
-tags:
-- Python
 description: 微信属于比较封闭的环境，语音多了会影响内存，而且在微信中听语音不方便，不能快进慢退等。本节介绍了如何批量导出微信语音文件，并转成一个mp3文件。
 ---
 

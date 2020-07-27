@@ -1,13 +1,6 @@
 ---
 title: Java - 一次从屎稿到成稿的发布
 date: 2019-12-24
-edit: 2019-12-24
-layout: post
-status: Completed
-categories:
-  - Java
-tags:
-  - Java
 description: 从仓促应对的屎稿，到优化的成稿，源于经验不足。
 ---
 

@@ -1,12 +1,6 @@
 ---
 title: Python - 文本文件中如何插入内容
 date: 2019-04-23
-edit: 2019-05-11
-layout: post
-categories:
-  - Python
-tags:
-  - Python
 description:  对文本文件进行读写追加很简单, 但插入或替换内容就不方便了, 本文探讨了几种方法, 学习了模板思维, 往大处想.
 ---
 

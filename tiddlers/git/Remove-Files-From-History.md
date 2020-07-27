@@ -1,13 +1,6 @@
 ---
 title: Git - 从历史中真正删除文件
 date: 2020-01-10
-edit: 2020-01-10
-layout: post
-status: Completed
-categories:
-  -  Git
-tags:
-  - Git
 description:   也算是历史遗留问题了，今天终于似乎搞定了，记录一下~
 ---
 

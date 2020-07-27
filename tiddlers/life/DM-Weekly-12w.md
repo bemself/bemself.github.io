@@ -1,16 +1,3 @@
----
-title:  My Struggle - 我的自怼周报 2020 12w
-date: 2020-03-22
-edit: 2020-03-22
-layout: post
-status: Writing
-categories:
-  - 心路,周报
-tags:
-  - 心路,周报
-description:  周结第13周
-
----
 
 # DebugMyself 周报 2020 12W 
 > 预定 20200322 2142 发布

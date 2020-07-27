@@ -1,13 +1,6 @@
 ---
 title: 2019 的尾巴
 date: 2019-12-31
-edit: 2019-12-31
-layout: post
-status: Completed
-categories:
-  - 心路
-tags:
-  - 心路
 description:  过去的已去，未来的未来。抓着 2019 的尾巴，记一下过去。
 ---
 

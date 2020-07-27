@@ -1,13 +1,6 @@
 ---
 title: Python 线性回归（Linear Regression) 基本理解
 date: 2020-01-08
-edit: 2020-01-08
-layout: post
-status: Completed
-categories:
-  - Python
-tags:
-  - Python
 description:  大概回顾了下线性回归是什么，做什么，怎么做~
 ---
 

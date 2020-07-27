@@ -1,13 +1,6 @@
 ---
 title: Python - Tuple 怎么用，为什么有 tuple 这种设计？
 date: 2019-12-22
-edit: 2019-12-22
-layout: post
-status: Completed
-categories:
-  - Python
-tags:
-  - Python
 description:  Python tuple 什么时候用？
 ---
 

@@ -1,13 +1,6 @@
 ---
 title: Python 绘图 - Dash
 date: 2020-02-02
-edit: 2020-02-02
-layout: post
-status: Completed
-categories:
-  - Python
-tags:
-  - Python
 description:  `Dash` 不仅仅是绘图，更是一个 `Python` 框架
 
 ---

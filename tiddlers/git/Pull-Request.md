@@ -1,13 +1,6 @@
 ---
 title: Git - 在 Forked 仓库 如何提交 Pull Request
 date: 2019-12-14
-edit: 2019-12-14
-layout: post
-status: Completed
-categories:
-  - Git
-tags:
-  - Git
 description: 第一次战战兢兢的成功提 Pull Request 后, 开心没两天便发现开头就错了...
 ---
 

@@ -1,13 +1,6 @@
 ---
 title: 开发供应商和用户：解决问题？发现问题？
 date: 2019-12-20
-edit: 2019-12-20
-layout: post
-status: Completed
-categories:
-  - 心路
-tags:
-  - 心路
 description: 最近连续两件事体会到“用”起来的感觉，用了才知道你做的东西究竟能派上多大用场， 才知道原来还有那么多没想到~
 ---
 

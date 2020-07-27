@@ -1,13 +1,6 @@
 ---
 title:  新冠肺炎 出门打仗
 date: 2020-02-12
-edit: 2020-02-12
-layout: post
-status: Completed
-categories:
-  - 心路
-tags:
-  - 心路
 description:  记录我神经质的出门过程
 
 ---

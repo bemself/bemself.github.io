@@ -1,16 +1,3 @@
----
-title: Algorithm in Python - Union-Find 算法
-edit: 2017-09-30
-layout: post
-categories:
-  - Python
-  - 算法
-tags:
-  - Python
-  - 算法
-description: 《算法4》，用 Python 实现 Union-Find 算法。Union-Find 算法（中文称并查集算法）是解决动态连通性（Dynamic Conectivity）问题的一种算法，作者以此为实例，讲述了如何分析和改进算法，本节涉及三个算法实现，分别是Quick Find, Quick Union 和 Weighted Quick Union。
----
-
 # Union-Find in Python
 
 Union-Find 算法（中文称并查集算法）是解决动态连通性（Dynamic Conectivity）问题的一种算法，作者以此为实例，讲述了如何分析和改进算法，本节涉及三个算法实现，分别是Quick Find, Quick Union 和 Weighted Quick Union。

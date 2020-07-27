@@ -1,15 +1,3 @@
----
-title:  Python Logging 日志输出到文件
-date:  2020-05-03 21:01:18
-edit:  2020-05-03 21:01:05
-layout: post
-status: Writing
-categories:
-  - Python
-tags:
-  - Python
-description:  使用日志配置文件, 输出 log 到文件
----
 
 # 背景
 

@@ -1,14 +1,6 @@
 ---
 title: 开练书法
 edit: 2019-04-09
-categories:
-- 书法
-tags:
-- 书法
-status: Completed
-mathjax: true
-highlight: true
-mermaid: true
 description: 第一次正式认真的练书法，小小的一点进步促成此文，以此激励继续前行~
 ---
 

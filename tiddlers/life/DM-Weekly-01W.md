@@ -1,13 +1,6 @@
 ---
 title:  My Struggle - 我的自怼周报 2020 01w
 date: 2020-01-12
-edit: 2020-01-12
-layout: post
-status: Completed
-categories:
-  - 心路,周报
-tags:
-  - 心路,周报
 description:  周结第二周，看看能坚持多久~
 
 ---

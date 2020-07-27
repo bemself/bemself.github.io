@@ -1,13 +1,6 @@
 ---
 title: Python - Sort 各种可能
 date: 2019-12-25
-edit: 2019-12-25
-layout: post
-status: Writing
-categories:
-  - Python
-tags:
-  - Python
 description:  Python 各种数据类型，都怎么排序的？
 ---
 

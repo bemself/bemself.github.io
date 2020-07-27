@@ -1,13 +1,6 @@
 ---
 title:  Slack 交互- bot, slash command, events, RTM 之简单区别
 date:  2020-05-04 11:00:55
-edit:  2020-05-04 11:00:59
-layout: post
-status: Writing
-categories:
-  - Python
-tags:
-  - Python
 description:  slack 这几种交互方式有啥区别, bot 又是啥
 ---
 

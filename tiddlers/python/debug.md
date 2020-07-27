@@ -1,13 +1,6 @@
 ---
 title: Python 调试简便大法
 date: 2020-03-29
-edit: 2020-03-29
-layout: post
-status: Completed
-categories:
-  - Python
-tags:
-  - Python
 description:  python 调试，其实就是 print 大法，加上...
 
 ---

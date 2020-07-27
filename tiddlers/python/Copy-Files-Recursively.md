@@ -1,13 +1,6 @@
 ---
 title: Python - 记录一次用 shutil 复制目录的囧
 date: 2020-01-30
-edit: 2020-01-30
-layout: post
-status: Completed
-categories:
-  - Python
-tags:
-  - Python
 description:  如何将目录中的所有文件（包括子目录）复制到其他路径中？python 有几种方法，分别尝试下。教训是，复制之前最好分析下文件结构，把一些干扰项如 `.git` 过滤掉。
 ---
 

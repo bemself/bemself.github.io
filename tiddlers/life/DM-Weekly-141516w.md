@@ -1,13 +1,6 @@
 ---
 title:  My Struggle - 我的自怼周报 2020 14-15-16w
 date: 2020-04-19
-edit: 2020-04-19
-layout: post
-status: Writing
-categories:
-  - 心路,周报
-tags:
-  - 心路,周报
 description:  周结第 14-15-16 周, 荒废了几周, 先凌乱的记一下
 
 ---

@@ -1,13 +1,6 @@
 ---
 title: Python 绘图 - Bokeh 初探
 date: 2020-01-30
-edit: 2020-01-30
-layout: post
-status: Completed
-categories:
-  - Python
-tags:
-  - Python
 description:  焦点词：交互式，高性能，浏览器。
 
 ---

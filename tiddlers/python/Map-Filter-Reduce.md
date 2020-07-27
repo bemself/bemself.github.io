@@ -1,13 +1,6 @@
 ---
 title: Map, Filter, Reduce
 date: 2020-01-10
-edit: 2020-01-22
-layout: post
-status: Completed
-categories:
-  - Python, Java, Lisp
-tags:
-  - Python, Java, Lisp
 description:  最早知道 MapReduce 是赶时髦学大数据，后来陆续在各种语言中接触 map, reduce, filter， 一直没有什么感觉， 直到最近才联系起来，原来都一样~
 ---
 

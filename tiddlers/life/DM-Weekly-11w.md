@@ -1,13 +1,6 @@
 ---
 title:  My Struggle - 我的自怼周报 2020 11w
 date: 2020-03-15
-edit: 2020-03-15
-layout: post
-status: Completed
-categories:
-  - 心路,周报
-tags:
-  - 心路,周报
 description:  周结第12周
 
 ---

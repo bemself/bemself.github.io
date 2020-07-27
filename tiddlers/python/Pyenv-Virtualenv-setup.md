@@ -1,13 +1,6 @@
 ---
 title: Python - pyenv virtualenv setup
 date: 2019-04-11
-edit: 2019-04-11
-status:  Completed
-layout: post
-categories:
-  - Python
-tags:
-  - Python
 description: Python 2 和 3 如何和平共处在同一台电脑中？同一版本的 Python 如何安装不同版本的模块等等，pyenv virtualenv来帮忙
 ---
 

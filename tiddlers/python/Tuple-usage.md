@@ -1,13 +1,6 @@
 ---
 title: Python - Tuple 在 python 中的几处应用
 date: 2019-12-25
-edit: 2019-12-25
-layout: post
-status: Writing
-categories:
-  - Python
-tags:
-  - Python
 description:  Python tuple 的几个有意思的地方，持续增补
 ---
 
