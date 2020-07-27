@@ -1,9 +1,0 @@
-created: 20200726102307987
-modified: 20200726102342423
-tags: TOC
-title: $:/config/FileSystemPaths
-type: text/vnd.tiddlywiki
-
-[is[system]removeprefix[$:/]addprefix[_system/]]
-
-[!has[draft.of]]
