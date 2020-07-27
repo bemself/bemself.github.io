@@ -16,10 +16,10 @@
     "outlinenone": "no",
     "fabiconsize": "26px",
     "listsdefon": "yes",
-    "color-primary": "#01579B",
-    "color-sidebar-tab-background": "#0288D1",
-    "color-button-background": "#cfd8dc",
-    "color-tag-background": "#cfd8dc",
+    "color-primary": "#004d40",
+    "color-sidebar-tab-background": "#39796b",
+    "color-button-background": "#9e9e9e",
+    "color-tag-background": "#66bb6a",
     "styledframes": "yes",
     "tiddler-width": "100%"
 }
