@@ -4,4 +4,4 @@
 
 # tiddlywiki --rendertiddlers [!is[system]] $:/core/templates/static.tiddler.html static text/plain --rendertiddler $:/core/templates/static.template.css static/static.css text/plain
 
-tiddlywiki --build index && mkdir -p ./public && mv ./output/index.html ./public/index.html && rm -r ./output
+tiddlywiki --build index && mkdir -p ../bemself.github.io-ghpages/public && mv ./output/index.html ../bemself.github.io-ghpages/public/index.html && rm -r ./output
