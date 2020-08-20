@@ -171,6 +171,8 @@ Error message and password prompt
 
 <li>$:/config/RelinkOnRename</li>
 
+<li>$:/config/Search/MinLength</li>
+
 <li>$:/config/TextEditor/EditorHeight/Mode</li>
 
 <li>$:/config/TextEditor/EnableToolbar</li>
@@ -216,6 +218,8 @@ Error message and password prompt
 <li>$:/core/images/up-arrow</li>
 
 <li>$:/core/ui/Buttons/more-page-actions</li>
+
+<li>$:/core/ui/ViewTemplate/tags</li>
 
 <li>$:/DefaultTiddlers</li>
 
@@ -286,6 +290,8 @@ Error message and password prompt
 <li>java</li>
 
 <li>java/Abstract</li>
+
+<li>java/design-pattern-from-source-code</li>
 
 <li>java/handle-different-envrionement</li>
 
@@ -652,6 +658,9 @@ Error message and password prompt
 </div>
 <div created="20200726103348255" modified="20200726103348268" title="$:/config/RelinkOnRename" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>yes</pre>
+</div>
+<div created="20200820002316022" modified="20200820002317668" title="$:/config/Search/MinLength" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre></pre>
 </div>
 <div created="20200727003707541" modified="20200727003707553" title="$:/config/TextEditor/EditorHeight/Mode" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>fixed</pre>
@@ -10206,6 +10215,52 @@ $:/config/PageControlButtons/Visibility/$(listItem)$
 
 &lt;/$reveal&gt;</pre>
 </div>
+<div created="20200812071606134" creator="jd" modified="20200820002658399" modifier="jd" tags="$:/tags/ViewTemplate" title="$:/core/ui/ViewTemplate/tags" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>\import $:/core/ui/EditTemplate/tags
+\define tag-item()
+&lt;span class=&quot;tc-tag-list-item&quot;&gt;
+&lt;$set name=&quot;transclusion&quot; value=&lt;&lt;currentTiddler&gt;&gt;&gt;
+&lt;$macrocall $name=&quot;tag-pill-body&quot; tag=&lt;&lt;currentTiddler&gt;&gt; icon={{!!icon}} colour={{!!color}} palette={{$:/palette}} element-tag=&quot;&quot;&quot;$button&quot;&quot;&quot; element-attributes=&quot;&quot;&quot;popup=&lt;&lt;qualify &quot;$:/state/popup/tag&quot;&gt;&gt; dragFilter='[all[current]tagging[]]' tag='span'&quot;&quot;&quot;/&gt;
+&lt;$reveal state=&lt;&lt;qualify &quot;$:/state/popup/tag&quot;&gt;&gt; type=&quot;popup&quot; position=&quot;below&quot; animate=&quot;yes&quot; class=&quot;tc-drop-down&quot;&gt;
+&lt;$set name=&quot;tv-show-missing-links&quot; value=&quot;yes&quot;&gt;
+&lt;$transclude tiddler=&quot;$:/core/ui/ListItemTemplate&quot;/&gt;
+&lt;/$set&gt;
+&lt;$list filter=&quot;[all[shadows+tiddlers]tag[$:/tags/TagDropdown]!has[draft.of]]&quot; variable=&quot;listItem&quot;&gt; 
+&lt;$transclude tiddler=&lt;&lt;listItem&gt;&gt;/&gt; 
+&lt;/$list&gt;
+&lt;hr&gt;
+&lt;$macrocall $name=&quot;list-tagged-draggable&quot; tag=&lt;&lt;currentTiddler&gt;&gt;/&gt;
+&lt;/$reveal&gt;
+&lt;/$set&gt;
+&lt;$button message=&quot;tm-remove-tag&quot; param={{!!title}} class=&quot;tc-btn-invisible tc-remove-tag&quot; style=&quot;
+    position: absolute;
+    right: .3em;
+    top: .15em;
+&quot;&gt;{{$:/core/images/close-button}}&lt;/$button&gt;
+&lt;/span&gt;
+\end
+\whitespace trim
+&lt;style&gt;
+.tc-tiddler-view-frame .tc-tags-wrapper .tc-remove-tag svg { height: .75em; padding-bottom: 3px; }
+.tc-tiddler-view-frame .tc-tags-wrapper &gt; .tc-tag-list-item &gt; .tc-tag-label { padding-right: 1.75em; }
+.tc-tiddler-view-frame .tc-edit-add-tag { margin: 0; padding: 0; font-size: .9em; }
+.tc-tiddler-view-frame .tc-edit-add-tag input { margin: 0; padding: 0 2px; margin-left: 4px; }
+&lt;/style&gt;
+&lt;$reveal type=&quot;nomatch&quot; stateTitle=&lt;&lt;folded-state&gt;&gt; text=&quot;hide&quot; tag=&quot;div&quot; retain=&quot;yes&quot; animate=&quot;yes&quot;&gt;
+&lt;$fieldmangler&gt;
+&lt;div class=&quot;tc-tags-wrapper&quot;&gt;&lt;$list filter=&quot;[all[current]tags[]sort[title]]&quot; storyview=&quot;pop&quot;&gt;&lt;&lt;tag-item&gt;&gt;&lt;/$list&gt;
+&lt;$reveal type=&quot;nomatch&quot; state={{{ [[$:/state/tagtid/]addsuffix{!!title}] }}} text=&quot;show&quot;&gt;
+&lt;$button set={{{ [[$:/state/tagtid/]addsuffix{!!title}] }}} setTo=&quot;show&quot; class=&quot;tc-btn-invisible&quot;&gt;{{$:/core/images/new-here-button}}&lt;/$button&gt;
+&lt;/$reveal&gt;
+&lt;$reveal type=&quot;match&quot; state={{{ [[$:/state/tagtid/]addsuffix{!!title}] }}} text=&quot;show&quot;&gt;
+&lt;$button set={{{ [[$:/state/tagtid/]addsuffix{!!title}] }}} setTo=&quot;hide&quot; class=&quot;tc-btn-invisible&quot;&gt;{{$:/core/images/close-button}}&lt;/$button&gt;
+&lt;$set name=&quot;tabIndex&quot; value={{$:/config/EditTabIndex}}&gt;
+&lt;$macrocall $name=&quot;tag-picker&quot;/&gt;
+&lt;/$set&gt;
+&lt;/$reveal&gt;&lt;/div&gt;
+&lt;/$fieldmangler&gt;
+&lt;/$reveal&gt;</pre>
+</div>
 <div created="20200726103001483" modified="20200727004907991" title="$:/DefaultTiddlers" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Hello~</pre>
 </div>
@@ -12206,6 +12261,34 @@ public boolean isIgnored(fileName){
 
 # ChangeLog
 - 2019-12-28 init</pre>
+</div>
+<div caption="从源码中学习设计模式" created="20200820002401908" modified="20200820004750683" tags="java" title="java/design-pattern-from-source-code" type="text/x-markdown" revision="0" bag="default">
+<pre>---
+title: 从源码中学习设计模式
+date:  2020-08-20
+description:   设计模式很枯燥，源码更枯燥，然而二者可以结合
+---
+
+昨晚看了一节免费的 java 公开课视频，其中提到一点很受启发，记录一下，作为对免费课的回馈，不是广告。具体视频链接请点击「阅读原文」。
+
+从实际代码演示，讲了三个设计模式：
+
+- 观察者模式
+- 策略模式
+- 模板方法模式
+
+具体的模式听完后，觉得挺简单了。
+
+我最受启发的是，讲师提到的：
+
+&gt; 代码设计时，参考开源框架中类似的实现
+&gt; 根据框架内部源码的命名，匹配到对应的设计模式
+
+举例来说，模板方法模式，源码中应用到此模式的文件可能多是以 Template 结尾，比如 JDBCTemplate, RedisTemplate, RestTemplate, 如果你想多了解怎么写模板方法，就可以参考它们，这比去网上搜索到的模板方法模式的示例代码要专业多了，毕竟已经是在工程上应用并经过检验了的。
+
+当自己在工作中也开始用比如模板方法模式时，不妨也参考上面将其命名为 XXXTemplate。
+
+-  2020-08-20 init</pre>
 </div>
 <div caption="Java - 一次从屎稿到成稿的发布" created="20200726132956242" datecreated="2017-09-30" modified="20200727041334252" tags="$:/tags/Commander/Working java" title="java/handle-different-envrionement" type="text/x-markdown" revision="0" bag="default">
 <pre>---
