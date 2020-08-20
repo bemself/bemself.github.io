@@ -1,0 +1,52 @@
+created: 20200812071606134
+creator: jd
+modified: 20200820002658399
+modifier: jd
+tags: $:/tags/ViewTemplate
+title: $:/core/ui/ViewTemplate/tags
+type: text/vnd.tiddlywiki
+
+\import $:/core/ui/EditTemplate/tags
+\define tag-item()
+<span class="tc-tag-list-item">
+<$set name="transclusion" value=<<currentTiddler>>>
+<$macrocall $name="tag-pill-body" tag=<<currentTiddler>> icon={{!!icon}} colour={{!!color}} palette={{$:/palette}} element-tag="""$button""" element-attributes="""popup=<<qualify "$:/state/popup/tag">> dragFilter='[all[current]tagging[]]' tag='span'"""/>
+<$reveal state=<<qualify "$:/state/popup/tag">> type="popup" position="below" animate="yes" class="tc-drop-down">
+<$set name="tv-show-missing-links" value="yes">
+<$transclude tiddler="$:/core/ui/ListItemTemplate"/>
+</$set>
+<$list filter="[all[shadows+tiddlers]tag[$:/tags/TagDropdown]!has[draft.of]]" variable="listItem"> 
+<$transclude tiddler=<<listItem>>/> 
+</$list>
+<hr>
+<$macrocall $name="list-tagged-draggable" tag=<<currentTiddler>>/>
+</$reveal>
+</$set>
+<$button message="tm-remove-tag" param={{!!title}} class="tc-btn-invisible tc-remove-tag" style="
+    position: absolute;
+    right: .3em;
+    top: .15em;
+">{{$:/core/images/close-button}}</$button>
+</span>
+\end
+\whitespace trim
+<style>
+.tc-tiddler-view-frame .tc-tags-wrapper .tc-remove-tag svg { height: .75em; padding-bottom: 3px; }
+.tc-tiddler-view-frame .tc-tags-wrapper > .tc-tag-list-item > .tc-tag-label { padding-right: 1.75em; }
+.tc-tiddler-view-frame .tc-edit-add-tag { margin: 0; padding: 0; font-size: .9em; }
+.tc-tiddler-view-frame .tc-edit-add-tag input { margin: 0; padding: 0 2px; margin-left: 4px; }
+</style>
+<$reveal type="nomatch" stateTitle=<<folded-state>> text="hide" tag="div" retain="yes" animate="yes">
+<$fieldmangler>
+<div class="tc-tags-wrapper"><$list filter="[all[current]tags[]sort[title]]" storyview="pop"><<tag-item>></$list>
+<$reveal type="nomatch" state={{{ [[$:/state/tagtid/]addsuffix{!!title}] }}} text="show">
+<$button set={{{ [[$:/state/tagtid/]addsuffix{!!title}] }}} setTo="show" class="tc-btn-invisible">{{$:/core/images/new-here-button}}</$button>
+</$reveal>
+<$reveal type="match" state={{{ [[$:/state/tagtid/]addsuffix{!!title}] }}} text="show">
+<$button set={{{ [[$:/state/tagtid/]addsuffix{!!title}] }}} setTo="hide" class="tc-btn-invisible">{{$:/core/images/close-button}}</$button>
+<$set name="tabIndex" value={{$:/config/EditTabIndex}}>
+<$macrocall $name="tag-picker"/>
+</$set>
+</$reveal></div>
+</$fieldmangler>
+</$reveal>
