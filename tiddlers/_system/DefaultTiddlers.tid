@@ -1,6 +1,6 @@
 created: 20200726103001483
-modified: 20200727004907991
+modified: 20200902014058351
 title: $:/DefaultTiddlers
 type: text/vnd.tiddlywiki
 
-Hello~
+<$list filter="[tag[java]]+[!sort[created]regexp:created[^202008]]"> 
